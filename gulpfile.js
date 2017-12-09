@@ -9,6 +9,7 @@ const autoprefixer = require("gulp-autoprefixer");
 const cssUnit = require("gulp-css-unit");
 const newer = require("gulp-newer");
 const imagemin = require("gulp-imagemin");
+const watcher = require("gulp-watch");
 
 // const paths = {};
 
@@ -44,31 +45,29 @@ function images() {
 }
 
 function fonts() {
-    gulp.src("./src/fonts/**/*.*")
+    return gulp.src("./src/fonts/**/*.*")
         .pipe(gulp.dest("./dist/fonts"));
 }
 
 function clear() {
-    del.sync(["./dist/**", "!./dist", "!./dist/img", "!./dist/img/**"]);
+    return del(["./dist/**/*.*", "./dist/**", "!./dist", "!./dist/img", "!./dist/img/**/*.*"]);
 }
 
 function server() {
     browserSync({
         server: {
-            baseDir: "./dest"
+            baseDir: "./dist"
         },
         browser: "chrome"
     });
-    browserSync.watch("./dest/**/*.*", browserSync.reload);
+    browserSync.watch("./dist/**/*.*", browserSync.reload);
 }
 
 function watch() {
-    gulp.watch("./src/templates/pages/*.pug", pages);
-    gulp.watch("./src/img/**/*.*", images);
-    gulp.watch("./src/fonts/**/*.*", fonts);
-    gulp.watch("./src/sass/style.scss", styles);
-    // gulp.watch("",);
-    // gulp.watch("",);
+    watcher("./src/templates/**/*.pug", pages);
+    watcher("./src/img/**/*.*", images);
+    watcher("./src/fonts/**/*.*" , fonts);
+    watcher("./src/sass/**/*.scss", styles);
 }
 
 gulp.task("default", gulp.series(

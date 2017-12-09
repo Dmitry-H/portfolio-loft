@@ -1,0 +1,16 @@
+.logon-button {
+  display: block;
+  padding: 10px 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  font-family: $robotomedium;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #fff;
+    color: #cc8820;
+  }
+}

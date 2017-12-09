@@ -1,0 +1,15 @@
+extends ../page-template
+
+block variables
+    - var title = "Главная страница"
+
+block content
+    main.main-wrapper
+        header.small-header
+            .small-header__logon
+                a.logon-button(href="#") Авторизоваться
+        .main-wrapper__content
+            article.developer-card
+                .developer-card__developer-info
+                    include ../common/developer-info
+        footer.small-footer © Дмитрий Хайс | создано с любовью в LoftSchool | 2018
