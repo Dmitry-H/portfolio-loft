@@ -4,6 +4,7 @@
   align-items: center;
 
   &__photo-wrapper {
+    margin-bottom: 14px;
     width: 140px;
     height: 140px;
     overflow: hidden;
@@ -22,6 +23,7 @@
 
   &__name {
     margin: 0;
+    margin-bottom: 8px;
     font-family: $robotomedium;
     font-size: 28px;
     font-weight: normal;
