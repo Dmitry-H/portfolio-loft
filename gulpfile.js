@@ -11,6 +11,10 @@ const newer = require("gulp-newer");
 const imagemin = require("gulp-imagemin");
 const watcher = require("gulp-watch");
 
+const gulpWebpack = require("gulp-webpack");
+const webpack = require("webpack");
+const webpackConfig = require("./webpack.config.js");
+
 // const paths = {};
 
 
@@ -37,10 +41,16 @@ function styles() {
         .pipe(gulp.dest("./dist/css"));
 }
 
+function scripts() {
+    return gulp.src("./src/js/script.js")
+        .pipe(gulpWebpack(webpackConfig, webpack))
+        .pipe(gulp.dest("./dist/js"))
+}
+
 function images() {
     return gulp.src("./src/img/**/*.*")
         .pipe(newer("./dist/img"))
-        .pipe(imagemin())
+        .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest("./dist/img"));
 }
 
@@ -68,11 +78,17 @@ function watch() {
     watcher("./src/img/**/*.*", images);
     watcher("./src/fonts/**/*.*" , fonts);
     watcher("./src/sass/**/*.scss", styles);
+    watcher("./src/js/**/*.js", scripts);
 }
+
+gulp.task("build", gulp.series(
+    clear,
+    gulp.parallel(pages, styles, fonts, images, scripts)
+));
 
 gulp.task("default", gulp.series(
     clear,
-    gulp.parallel(pages, styles, fonts, images),
+    gulp.parallel(pages, styles, fonts, images, scripts),
     gulp.parallel(watch, server)
 ));
 
@@ -83,3 +99,4 @@ exports.fonts = fonts;
 exports.clear = clear;
 exports.server = server;
 exports.watch = watch;
+exports.scripts = scripts;
