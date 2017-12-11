@@ -1,0 +1,31 @@
+.main-nav {
+
+  &__items {
+    @include list-style;
+    display: flex;
+    background-color: #e1c58c;
+  }
+
+  &__item {
+    margin-right: 2px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 14px 31px;
+    font-family: $robotomedium;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #e7a731;
+    transition: $decor-animation-delay;
+
+    &:hover {
+      background-color: #cc8820;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@import "../../node_modules/node-normalize-scss/_normalize";
+
+@import "./global/tags";
+@import "./global/fonts";
+
+@import "./variables";
+@import "./mixins";
+
+
+@import "./blocks/logon-button";
+@import "./blocks/main-wrapper";
+@import "./blocks/small-footer";
+@import "./blocks/small-header";
+@import "./blocks/developer-info";
+@import "./blocks/developer-card";
+@import "./blocks/socials";
+@import "./blocks/main-nav";
+@import "./blocks/page-header";

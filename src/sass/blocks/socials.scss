@@ -1,0 +1,28 @@
+.socials {
+  @include list-style;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__item {
+    margin-right: 25px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    display: block;
+    opacity: 0.7;
+    transition: $decor-animation-delay;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__image {
+    display: block;
+  }
+}

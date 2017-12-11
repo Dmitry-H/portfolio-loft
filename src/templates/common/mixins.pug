@@ -1,0 +1,13 @@
+mixin socials(items)
+    ul.socials
+        - for (var i = 0; i < items.length; i++)
+            li.socials__item
+                a.socials__link(href=`${items[i].link}` target="_blank")
+                    img.socials__image(src=`./img/${items[i].name}.svg`)
+
+mixin menu(items)
+    nav.main-nav
+        ul.main-nav__items
+            - for (var i = 0; i < items.length; i++)
+                li.main-nav__item
+                    a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
