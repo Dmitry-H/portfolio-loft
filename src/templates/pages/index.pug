@@ -1,9 +1,8 @@
 extends ../page-template
-include ../common/mixins
+
 
 block variables
     - var title = "Главная страница"
-    include ../common/data
 block content
     main.main-wrapper
         header.small-header
@@ -12,7 +11,7 @@ block content
         .main-wrapper__content
             article.developer-card
                 .developer-card__developer-info
-                    include ../common/developer-info
+                    include ../blocks/developer-info
                 .developer-card__socials
                     +socials(socialItems)
                 .developer-card__menu

@@ -10,6 +10,11 @@ const cssUnit = require("gulp-css-unit");
 const newer = require("gulp-newer");
 const imagemin = require("gulp-imagemin");
 const watcher = require("gulp-watch");
+const plumber = require("gulp-plumber");
+
+const svgSprite = require("gulp-svg-sprite");
+const cheerio = require("gulp-cheerio");
+const replace = require("gulp-replace");
 
 const gulpWebpack = require("gulp-webpack");
 const webpack = require("webpack");
@@ -20,6 +25,7 @@ const webpackConfig = require("./webpack.config.js");
 
 function pages() {
     return gulp.src("./src/templates/pages/*.pug")
+        .pipe(plumber())
         .pipe(pug({pretty: true}))
         .pipe(gulp.dest("./dist"));
 }
@@ -48,10 +54,37 @@ function scripts() {
 }
 
 function images() {
-    return gulp.src("./src/img/**/*.*")
+    return gulp.src(["./src/img/**/*.*", "!./src/img/sprites", "!./src/img/sprites/**/*.*"])
         .pipe(newer("./dist/img"))
         .pipe(imagemin({optimizationLevel: 5}))
         .pipe(gulp.dest("./dist/img"));
+}
+
+function sprites() {
+    return gulp.src("./src/img/sprites/**/*.svg")
+        .pipe(cheerio({
+            run: $ => {
+                $('[fill]').removeAttr('fill');
+                $('[stroke]').removeAttr('stroke');
+                $('[style]').removeAttr('style');
+            },
+            // parserOptions: {xmlMode: true}
+        }))
+        .pipe(replace('&gt;', '>'))
+        .pipe(svgSprite({
+            mode: {
+                symbol: {
+                    sprite: "../../dist/img/sprite.svg",
+                    render: {
+                        scss: {
+                            dest: "./src/sass/global/sprites.scss",
+                            // template: "src/sass/sprite_template.scss"
+                        }
+                    }
+                }
+            }
+        }))
+        .pipe(gulp.dest("./tmp"))
 }
 
 function fonts() {
@@ -76,6 +109,7 @@ function server() {
 function watch() {
     watcher("./src/templates/**/*.pug", pages);
     watcher("./src/img/**/*.*", images);
+    watcher("./src/img/sprites/**/*.svg", sprites);
     watcher("./src/fonts/**/*.*" , fonts);
     watcher("./src/sass/**/*.scss", styles);
     watcher("./src/js/**/*.js", scripts);
@@ -100,3 +134,4 @@ exports.clear = clear;
 exports.server = server;
 exports.watch = watch;
 exports.scripts = scripts;
+exports.sprites = sprites;

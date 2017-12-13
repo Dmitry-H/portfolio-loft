@@ -1,9 +1,19 @@
-mixin socials(items)
-    ul.socials
+mixin icon(name, className, modifier)
+    - var classNames = className;
+        if modifier
+            - classNames += ` ${className}--${modifier}`
+    svg(class=`${classNames}`)
+        use(xlink:href=`./img/sprite.svg#${name}`)
+
+mixin socials(items, modifier)
+    - var classNames = "socials";
+    if modifier
+        - classNames += ` socials--${modifier}`
+    ul(class=`${classNames}`)
         - for (var i = 0; i < items.length; i++)
             li.socials__item
                 a.socials__link(href=`${items[i].link}` target="_blank")
-                    img.socials__image(src=`./img/${items[i].name}.svg`)
+                    +icon(items[i].name, "socials__image", items[i].name)
 
 mixin menu(items)
     nav.main-nav

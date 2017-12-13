@@ -1,0 +1,11 @@
+.developer-photo {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 50%;
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+}

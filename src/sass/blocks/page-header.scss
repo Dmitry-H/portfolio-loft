@@ -1,3 +1,14 @@
 .page-header {
   background-color: #e1d0b0;
+  background-image: url(../img/header-bg.jpg);
+  background-size: cover;
+
+  &__header {
+    display: flex;
+    padding: 30px;
+  }
+
+  &__humburger-button {
+    margin-left: auto;
+  }
 }
