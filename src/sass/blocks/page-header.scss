@@ -1,14 +1,72 @@
 .page-header {
+  padding-bottom: 68px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #e1d0b0;
-  background-image: url(../img/header-bg.jpg);
-  background-size: cover;
+  //overflow: hidden;
+/*  background: url(../img/portfolio_header.svg) no-repeat center,
+              url(../img/header-bg.jpg) no-repeat;*/
+  background: url(../img/header-bg.jpg) no-repeat;
+  background-size: auto, cover;
+
+  &__label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__label-image {
+    width: 1175.495px;
+    height: 313.961px;
+    fill: rgba(#cd8920, 0.1)
+  }
 
   &__header {
     display: flex;
-    padding: 30px;
+    align-self: stretch;
+    margin-bottom: 64px;
+    padding: 25px 29px;
   }
 
   &__humburger-button {
     margin-left: auto;
   }
+
+  &__developer-info {
+    margin-bottom: 139px;
+  }
+
+  &__arrow-down {
+    display: block;
+  }
+
+  &__arrow-down-image {
+    width: 25.18px;
+    height: 16.164px;
+    fill: #fff;
+    opacity: 0.7;
+  }
+
+/*  &::before, &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -93px;
+    width: 50%;
+    height: 170px;
+    background-color: #fff;
+  }
+
+  &::before {
+    left: 0;
+    transform: skewY(9.7deg);
+  }
+
+  &::after {
+    right: 0;
+    transform: skewY(-9.7deg);
+  }*/
 }

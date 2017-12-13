@@ -77,7 +77,7 @@ function sprites() {
                     sprite: "../../dist/img/sprite.svg",
                     render: {
                         scss: {
-                            dest: "./src/sass/global/sprites.scss",
+                            dest: "../../src/sass/sprites.scss",
                             // template: "src/sass/sprite_template.scss"
                         }
                     }
@@ -117,12 +117,12 @@ function watch() {
 
 gulp.task("build", gulp.series(
     clear,
-    gulp.parallel(pages, styles, fonts, images, scripts)
+    gulp.parallel(pages, styles, fonts, images, sprites, scripts)
 ));
 
 gulp.task("default", gulp.series(
     clear,
-    gulp.parallel(pages, styles, fonts, images, scripts),
+    gulp.parallel(pages, styles, fonts, images, sprites, scripts),
     gulp.parallel(watch, server)
 ));
 
