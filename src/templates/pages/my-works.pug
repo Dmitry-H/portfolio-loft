@@ -4,8 +4,28 @@ block variables
     - var title = "Мои работы"
 
 block content
-    .content
-        include ../blocks/page-header
-        h2 Мои работы
-        h2 Что обо мне говорят
-        h3 Связаться со мной
+    .main-container
+        .content
+            include ../blocks/page-header
+            .main-container__main-content
+                main.main-content.main-container__main-content
+                    section.my-works
+                        .my-works__header
+                            .my-works__title
+                                h2.common-title.common-title--works Мои работы
+                        .my-works__slider
+                            .works-slider
+                                .works-slider__info
+                                    .works-slider__title
+                                        h3.common-title.common-title--small Сайт школы онлайн <br> образования
+                                    p.works-slider__technologies HTML , CSS, JavaScript
+                                    a(href="#").site-link Посмотреть сайт
+                                .works-slider__images
+                    section.about-me
+                        .about-me__header
+                            h2.common-title.common-title--about Что обо мне <br> говорят
+                        .about-me__feedbacks
+                        .about-me__contact
+                        .about-me__up-arrow
+
+                h3 Связаться со мной

@@ -1,22 +1,14 @@
 .page-header {
-  padding-bottom: 68px;
+  padding-bottom: 67px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #e1d0b0;
-  //overflow: hidden;
-/*  background: url(../img/portfolio_header.svg) no-repeat center,
-              url(../img/header-bg.jpg) no-repeat;*/
-  background: url(../img/header-bg.jpg) no-repeat;
-  background-size: auto, cover;
-
-  &__label {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+  background: url(../img/portfolio_header.svg) no-repeat center,
+              url(../img/bg.svg) no-repeat left bottom,
+              url(../img/header-bg.jpg) no-repeat;
+  background-size: auto, 100% auto, cover;
 
   &__label-image {
     width: 1175.495px;
@@ -49,24 +41,4 @@
     fill: #fff;
     opacity: 0.7;
   }
-
-/*  &::before, &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -93px;
-    width: 50%;
-    height: 170px;
-    background-color: #fff;
-  }
-
-  &::before {
-    left: 0;
-    transform: skewY(9.7deg);
-  }
-
-  &::after {
-    right: 0;
-    transform: skewY(-9.7deg);
-  }*/
 }

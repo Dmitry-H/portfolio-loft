@@ -1,0 +1,42 @@
+.works-slider {
+  display: flex;
+
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 205px 240px;
+    width: 50%;
+    box-sizing: border-box;
+    background-color: #f4f0e9;
+  }
+
+  &__title {
+    //width: auto;
+  }
+
+  &__technologies {
+    margin: 0;
+    margin-bottom: 41px;
+    padding: 16px 0;
+    align-self: stretch;
+    font-family: $robotomedium;
+    font-size: 16px;
+    color: #cd8920;
+    text-align: center;
+    text-transform: uppercase;
+    border-top: 1px solid #aeaeab;
+    border-bottom: 1px solid #aeaeab;
+  }
+
+  &__site-link {
+
+  }
+
+  &__images {
+    width: 50%;
+    box-sizing: border-box;
+    background-color: #ebe5db;
+  }
+}
