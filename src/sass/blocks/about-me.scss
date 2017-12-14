@@ -1,4 +1,7 @@
 .about-me {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #f0e6d2;
   background: url(../img/about-me-bg.png) no-repeat left bottom;
   background-size: 100% auto;
@@ -7,5 +10,9 @@
     text-align: center;
   }
 
-
+  &__feedbacks {
+    @include list-style;
+    margin-bottom: 70px;
+    display: flex;
+  }
 }

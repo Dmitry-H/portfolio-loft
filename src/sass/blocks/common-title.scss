@@ -45,8 +45,12 @@
   }
 
   &--works {
-    //padding: 40px 70px;
     background: url(../img/works_header.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--about {
+    background: url(../img/about_header.svg) no-repeat center;
     background-size: contain;
   }
 }

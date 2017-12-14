@@ -24,8 +24,19 @@ block content
                     section.about-me
                         .about-me__header
                             h2.common-title.common-title--about Что обо мне <br> говорят
-                        .about-me__feedbacks
+                        ul.about-me__feedbacks
+                            +feedbacks(instructors)
                         .about-me__contact
+                            form#mail-form
+                                .mail-form
+                                    .mail-form__header
+                                        h3.common-title.common-title--small Связаться со мной
+                                    .mail-form__fields
+                                        input.mail-form__input-field(type="text" placeholder="Имя")
+                                        input.mail-form__input-field(type="email" placeholder="Email")
+                                        textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение")
+                                    .mail-form__controls
+                                        button(type="submit").button.mail-form__button Отправить
+                                        button(type="clear").button.mail-form__button Очистить
                         .about-me__up-arrow
 
-                h3 Связаться со мной

@@ -32,3 +32,14 @@ mixin developer-info(modifier)
         .developer-info__text
             b.developer-info__name Хайс Дмитрий
             span.developer-info__descriptin Личный сайт веб разработчика
+
+mixin feedbacks(items)
+    - for (var i = 0; i < items.length; i++)
+        li.feedback
+            p.feedback__text= items[i].text
+            .feedback__autor-card
+                .feedback__photo-wrapper
+                    img.feedback__photo(src=`./img/userpics/${items[i].photo}`)
+                .feedback__info
+                    b.feedback__name= items[i].name
+                    span.feedback__position= items[i].position
