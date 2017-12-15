@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #f0e6d2;
   background: url(../img/about-me-bg.png) no-repeat left bottom;
+  background-color: #f0e6d2;
   background-size: 100% auto;
 
   &__header {
@@ -14,5 +14,14 @@
     @include list-style;
     margin-bottom: 70px;
     display: flex;
+  }
+
+  &__contact {
+    margin-bottom: 70px;
+  }
+
+  &__up-arrow {
+    margin-bottom: 70px;
+
   }
 }

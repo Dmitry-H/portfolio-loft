@@ -21,6 +21,15 @@ block content
                                     p.works-slider__technologies HTML , CSS, JavaScript
                                     a(href="#").site-link Посмотреть сайт
                                 .works-slider__images
+                                    .works-slider__slide
+                                        img.works-slider__image(src="./img/userpics/slide-1.png")
+                                    .works-slider__navigation-slides
+                                        .works-slider__navigation-slide.works-slider__navigation-slide--prev
+                                            img.works-slider__image(src="./img/userpics/slide-2.png")
+                                            +icon("portf_arrow_up", "works-slider__navigation-arrow")
+                                        .works-slider__navigation-slide.works-slider__navigation-slide--next
+                                            img.works-slider__image(src="./img/userpics/slide-3.png")
+                                            +icon("portf_arrow_down", "works-slider__navigation-arrow")
                     section.about-me
                         .about-me__header
                             h2.common-title.common-title--about Что обо мне <br> говорят
@@ -38,5 +47,6 @@ block content
                                     .mail-form__controls
                                         button(type="submit").button.mail-form__button Отправить
                                         button(type="clear").button.mail-form__button Очистить
-                        .about-me__up-arrow
-
+                        a.about-me__up-arrow(href="#")
+                            +icon("arrow_down", "navigate-arrow", "up")
+            include ../blocks/page-footer

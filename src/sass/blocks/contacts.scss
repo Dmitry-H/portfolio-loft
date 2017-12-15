@@ -1,0 +1,6 @@
+.contacts {
+  @include list-style;
+  font-family: $robotolight;
+  line-height: 26px;
+  opacity: 0.5;
+}

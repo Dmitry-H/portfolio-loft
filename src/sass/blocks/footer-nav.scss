@@ -1,0 +1,27 @@
+.footer-nav {
+
+  &__items {
+    @include list-style;
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 40px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-family: $robotomedium;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: $decor-animation-delay;
+
+    &:hover {
+      color: $button-color-hover;
+    }
+  }
+}

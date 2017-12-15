@@ -1,0 +1,41 @@
+.page-footer {
+  display: flex;
+  background-color: #4f4c46;
+  font-family: $robotolight;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+
+  &__column {
+    flex: 1;
+    padding: 25px 30px;
+
+    &--lines {
+      box-shadow: -27px 0 0 -26px #74726e,
+                  27px 0 0 -26px #74726e;
+    }
+  }
+
+  &__description {
+    display: block;
+  }
+
+  &__autor {
+    display: block;
+    opacity: 0.5;
+  }
+
+  &__loweloft {
+    display: block;
+    opacity: 0.5;
+  }
+
+  &__navigation {
+    margin-bottom: 45px;
+  }
+
+  &__contacts {
+
+    opacity: 0.5;
+  }
+}

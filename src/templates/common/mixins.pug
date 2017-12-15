@@ -15,12 +15,24 @@ mixin socials(items, modifier)
                 a.socials__link(href=`${items[i].link}` target="_blank")
                     +icon(items[i].name, "socials__image", items[i].name)
 
-mixin menu(items)
+mixin menu1(items)
     nav.main-nav
         ul.main-nav__items
             - for (var i = 0; i < items.length; i++)
                 li.main-nav__item
                     a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
+
+mixin menu(items, className, itemsCount)
+    - var max;
+        if itemsCount
+            - max = itemsCount
+        else
+            - max = items.length
+    nav(class=className)
+        ul(class=`${className}__items`)
+            - for (var i = 0; i < max; i++)
+                li(class=`${className}__item`)
+                    a(class=`${className}__link` href=`${items[i].page}.html`) #{items[i].name}
 
 mixin developer-info(modifier)
     - var classNames = "developer-info";
@@ -43,3 +55,8 @@ mixin feedbacks(items)
                 .feedback__info
                     b.feedback__name= items[i].name
                     span.feedback__position= items[i].position
+
+mixin contacts(items)
+    ul.contacts
+        each item, itemName in items
+            li(class = `contacts__item contacts__item--${itemName}`)= item
