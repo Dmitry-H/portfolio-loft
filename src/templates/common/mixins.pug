@@ -76,3 +76,34 @@ mixin skills(skills)
                                 circle.skills__image-bg(r="45" cx="50%" cy="50%" fill="none")
                                 circle.skills__image-level(r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)")
                             span.skills__label= item[i]
+
+mixin footer(modifier)
+    - var classNames = "page-footer";
+        if modifier
+            - classNames += ` ${classNames}--${modifier}`
+    footer(class=classNames)
+        .page-footer__column
+            span.page-footer__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+            span.page-footer__autor © Хайс Дмитрий
+            span.page-footer__loweloft Создано с любовью в LoftSchool | 2018
+        .page-footer__column.page-footer__column--lines
+            .page-footer__navigation
+                +menu(menuItems, "footer-nav")
+            .page-footer__socials
+                +socials(socialItems)
+        .page-footer__column
+            +contacts(contacts)
+
+mixin page-header(modifier)
+    - var classNames = "page-header";
+        if modifier
+            - classNames += ` ${classNames}--${modifier}`
+    header(class=classNames)
+        include ../blocks/header-header
+        .page-header__developer-info
+            +developer-info("header")
+        a.page-header__arrow-down(href="#")
+            +icon("arrow_down", "navigate-arrow")
+
+mixin blog
+    section.blog

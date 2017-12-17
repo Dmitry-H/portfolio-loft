@@ -5,7 +5,7 @@ block variables
 
 block content
     .content
-        include ../blocks/page-header
+        +page-header("double")
         section.detail-info
             .detail-info__column.detail-info__column--about
                 .detail-info__header
@@ -29,7 +29,7 @@ block content
                 .map__contacts-wrapper
                     +contacts(contacts, "map")
             .map__footer
-                include ../blocks/page-footer
+                +footer("transparent")
 block bottom-scripts
     //-script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASGXjcyIm5tHdWCrRpgClZg2wTxnqLDr8&callback=module.exports.initMap")
     //-script initMap();

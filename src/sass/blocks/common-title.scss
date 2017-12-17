@@ -16,7 +16,6 @@
     width: 40px;
     height: 14px;
     position: absolute;
-
     background: url(../img/ellipse-3.svg) no-repeat;
   }
 
@@ -52,5 +51,18 @@
   &--about {
     background: url(../img/about_header.svg) no-repeat center;
     background-size: contain;
+  }
+
+  &--blog {
+    background: url(../img/blog_header.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--light {
+    color: #fff;
+
+    &::before, &::after {
+      background: url(../img/ellipse-3-light.svg) no-repeat;
+    }
   }
 }

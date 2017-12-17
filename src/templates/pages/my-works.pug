@@ -6,7 +6,7 @@ block variables
 block content
     .main-container
         .content
-            include ../blocks/page-header
+            +page-header
             .main-container__main-content
                 main.main-content.main-container__main-content
                     section.my-works
@@ -49,4 +49,4 @@ block content
                                         button(type="clear").button.mail-form__button Очистить
                         a.about-me__up-arrow(href="#")
                             +icon("arrow_down", "navigate-arrow", "up")
-            include ../blocks/page-footer
+            +footer
