@@ -88,5 +88,27 @@
         margin-bottom: 0;
       }
     }
+
+    h1, h2, h3, h4, h5 {
+      margin: 20px 0;
+      color: #666;
+    }
+
+    a {
+      color: #0071d0;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: #ccc;
+      }
+    }
+
+    b {
+      color: #555;
+    }
   }
 }

@@ -19,13 +19,6 @@ mixin socials(items, addClass)
                     a.socials__link(href=`${items[i].link}` target="_blank")
                         +icon(items[i].name, "socials__image", items[i].name)
 
-//mixin menu1(items)
-//    nav.main-nav
-//        ul.main-nav__items
-//            - for (var i = 0; i < items.length; i++)
-//                li.main-nav__item
-//                    a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
-
 mixin menu(items, className, itemsCount)
     - var max;
         if itemsCount
