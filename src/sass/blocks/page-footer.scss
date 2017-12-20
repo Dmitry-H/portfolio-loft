@@ -10,9 +10,25 @@
     flex: 1;
     padding: 25px 30px;
 
-    &--lines {
-      box-shadow: -27px 0 0 -26px #74726e,
-                  27px 0 0 -26px #74726e;
+    &--links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-shadow: -26px 0 0 -25px #74726e,
+                  26px 0 0 -25px #74726e;
+    }
+
+    @include  small-desktop {
+      flex: 0 1 auto;
+
+      &--links {
+        flex: 1 0 auto;
+      }
+
+      &--contacts {
+        flex: 1 0 auto;
+      }
     }
   }
 
@@ -28,10 +44,6 @@
   &__loweloft {
     display: block;
     opacity: 0.5;
-  }
-
-  &__navigation {
-    margin-bottom: 45px;
   }
 
   &__contacts {

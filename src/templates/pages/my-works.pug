@@ -4,49 +4,43 @@ block variables
     - var title = "Мои работы"
 
 block content
-    .main-container
-        .content
-            +page-header
-            .main-container__main-content
-                main.main-content.main-container__main-content
-                    section.my-works
-                        .my-works__header
-                            .my-works__title
-                                h2.common-title.common-title--works Мои работы
-                        .my-works__slider
-                            .works-slider
-                                .works-slider__info
-                                    .works-slider__title
-                                        h3.common-title.common-title--small Сайт школы онлайн <br> образования
-                                    p.works-slider__technologies HTML , CSS, JavaScript
-                                    a(href="#").site-link Посмотреть сайт
-                                .works-slider__images
-                                    .works-slider__slide
-                                        img.works-slider__image(src="./img/userpics/slide-1.png")
-                                    .works-slider__navigation-slides
-                                        .works-slider__navigation-slide.works-slider__navigation-slide--prev
-                                            img.works-slider__image(src="./img/userpics/slide-2.png")
-                                            +icon("portf_arrow_up", "works-slider__navigation-arrow")
-                                        .works-slider__navigation-slide.works-slider__navigation-slide--next
-                                            img.works-slider__image(src="./img/userpics/slide-3.png")
-                                            +icon("portf_arrow_down", "works-slider__navigation-arrow")
-                    section.about-me
-                        .about-me__header
-                            h2.common-title.common-title--about Что обо мне <br> говорят
-                        ul.about-me__feedbacks
-                            +feedbacks(instructors)
-                        .about-me__contact
-                            form#mail-form
-                                .mail-form
-                                    .mail-form__header
-                                        h3.common-title.common-title--small Связаться со мной
-                                    .mail-form__fields
-                                        input.mail-form__input-field(type="text" placeholder="Имя")
-                                        input.mail-form__input-field(type="email" placeholder="Email")
-                                        textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение")
-                                    .mail-form__controls
-                                        button(type="submit").button.mail-form__button Отправить
-                                        button(type="clear").button.mail-form__button Очистить
-                        a.about-me__up-arrow(href="#")
-                            +icon("arrow_down", "navigate-arrow", "up")
-            +footer
+    +page-header
+    section.my-works
+        .my-works__header
+            .my-works__title
+                h2.common-title.common-title--works Мои работы
+        .works-slider
+            .works-slider__info
+                h3.common-title.common-title--small Сайт школы онлайн <br> образования
+                p.works-slider__technologies HTML , CSS, JavaScript
+                a(href="#").site-link Посмотреть сайт
+            .works-slider__images
+                .works-slider__slide
+                    img.works-slider__image(src="./img/userpics/slide-1.png")
+                .works-slider__navigation-slides
+                    .works-slider__navigation-slide.works-slider__navigation-slide--prev
+                        img.works-slider__image(src="./img/userpics/slide-2.png")
+                        +icon("portf_arrow_up", "works-slider__navigation-arrow")
+                    .works-slider__navigation-slide.works-slider__navigation-slide--next
+                        img.works-slider__image(src="./img/userpics/slide-3.png")
+                        +icon("portf_arrow_down", "works-slider__navigation-arrow")
+    section.about-me
+        .about-me__header
+            h2.common-title.common-title--about Что обо мне <br> говорят
+        ul.about-me__feedbacks
+            +feedbacks(instructors)
+        .about-me__contact
+            form#mail-form
+                .mail-form
+                    .mail-form__header
+                        h3.common-title.common-title--small Связаться со мной
+                    .mail-form__fields
+                        input.mail-form__input-field(type="text" placeholder="Имя")
+                        input.mail-form__input-field(type="email" placeholder="Email")
+                        textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение")
+                    .mail-form__controls
+                        button(type="submit").button.mail-form__button Отправить
+                        button(type="clear").button.mail-form__button Очистить
+        a.about-me__up-arrow(href="#")
+            +icon("arrow_down", "navigate-arrow", "up")
+    +footer

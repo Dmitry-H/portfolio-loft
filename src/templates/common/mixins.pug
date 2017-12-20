@@ -5,22 +5,26 @@ mixin icon(name, className, modifier)
     svg(class=`${classNames}`)
         use(xlink:href=`./img/sprite.svg#${name}`)
 
-mixin socials(items, modifier)
+mixin socials(items, addClass)
     - var classNames = "socials";
-    if modifier
-        - classNames += ` socials--${modifier}`
-    ul(class=`${classNames}`)
-        - for (var i = 0; i < items.length; i++)
-            li.socials__item
-                a.socials__link(href=`${items[i].link}` target="_blank")
-                    +icon(items[i].name, "socials__image", items[i].name)
-
-mixin menu1(items)
-    nav.main-nav
-        ul.main-nav__items
+    if addClass
+        if addClass.modifier
+            - classNames += ` ${classNames}--${addClass.modifier}`
+        if addClass.mixClass
+            - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        ul.socials__items
             - for (var i = 0; i < items.length; i++)
-                li.main-nav__item
-                    a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
+                li.socials__item
+                    a.socials__link(href=`${items[i].link}` target="_blank")
+                        +icon(items[i].name, "socials__image", items[i].name)
+
+//mixin menu1(items)
+//    nav.main-nav
+//        ul.main-nav__items
+//            - for (var i = 0; i < items.length; i++)
+//                li.main-nav__item
+//                    a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
 
 mixin menu(items, className, itemsCount)
     - var max;
@@ -32,15 +36,27 @@ mixin menu(items, className, itemsCount)
         ul(class=`${className}__items`)
             - for (var i = 0; i < max; i++)
                 li(class=`${className}__item`)
-                    a(class=`${className}__link` href=`${items[i].page}.html`) #{items[i].name}
+                    a(class=`${className}__link` href=`${items[i].page}`) #{items[i].name}
 
-mixin developer-info(modifier)
+mixin developer-photo(addClass)
+    - var classNames = "developer-photo";
+        if addClass
+            if addClass.modifier
+                - classNames += ` ${classNames}--${addClass.modifier}`
+            if addClass.mixClass
+                - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        img.developer-photo__image(src="./img/userpics/avatar.jpg" alt="Моё фото")
+
+mixin developer-info(addClass)
     - var classNames = "developer-info";
-        if modifier
-            - classNames += ` developer-info--${modifier}`
-    div(class=`${classNames}`)
-        .developer-info__photo-wrapper
-            include ../blocks/developer-photo
+    if addClass
+        if addClass.modifier
+            - classNames += ` ${classNames}--${addClass.modifier}`
+        if addClass.mixClass
+            - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        +developer-photo({mixClass: "developer-info__photo-wrapper"})
         .developer-info__text
             b.developer-info__name Хайс Дмитрий
             span.developer-info__descriptin Личный сайт веб разработчика
@@ -86,12 +102,10 @@ mixin footer(modifier)
             span.page-footer__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
             span.page-footer__autor © Хайс Дмитрий
             span.page-footer__loweloft Создано с любовью в LoftSchool | 2018
-        .page-footer__column.page-footer__column--lines
-            .page-footer__navigation
-                +menu(menuItems, "footer-nav")
-            .page-footer__socials
-                +socials(socialItems)
-        .page-footer__column
+        .page-footer__column.page-footer__column--links
+            +menu(menuItems, "footer-nav")
+            +socials(socialItems)
+        .page-footer__column.page-footer__column--contacts
             +contacts(contacts)
 
 mixin page-header(modifier)
@@ -100,10 +114,6 @@ mixin page-header(modifier)
             - classNames += ` ${classNames}--${modifier}`
     header(class=classNames)
         include ../blocks/header-header
-        .page-header__developer-info
-            +developer-info("header")
+        +developer-info({modifier: "header", mixClass: "page-header__developer-info"})
         a.page-header__arrow-down(href="#")
             +icon("arrow_down", "navigate-arrow")
-
-mixin blog
-    section.blog

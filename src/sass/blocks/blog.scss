@@ -5,11 +5,19 @@
   font-family: $robotoregular;
   font-size: 16px;
 
+  @include small-desktop {
+    padding: 70px 110px 70px 44px;
+  }
+
   &__contents {
     margin-right: 120px;
     width: 280px;
     box-sizing: border-box;
     flex-shrink: 0;
+
+    @include small-desktop {
+      margin-right: 100px;
+    }
   }
 
   &__article-name {
@@ -38,7 +46,7 @@
     }
   }
 
-  &__articles {
+  &__articles-items {
     @include list-style;
   }
 

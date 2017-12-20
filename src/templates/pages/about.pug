@@ -4,32 +4,31 @@ block variables
     - var title = "Обо мне"
 
 block content
-    .content
-        +page-header("double")
-        section.detail-info
-            .detail-info__column.detail-info__column--about
-                .detail-info__header
-                    h1.common-title.common-title--about Обо мне
-                .detail-info__about
-                    .detail-info__photo-wrapper
-                        img.detail-info__photo(src="./img/userpics/avatar.jpg")
-                    h3.common-title.common-title--small Кто я
-                    p.detail-info__text Я веб разработчик из Саратова. Мне 29 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-                    p.detail-info__text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-            .detail-info__column.detail-info__column--skills
-                .detail-info__title-wrapper
-                    h2.common-title.common-title--small Чем я могу быть <br> вам полезен
-                p.detail-info__text Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
-                +skills(skills)
-        section.map#map
-            img.map__image(src="./img/map.png")
-            .map__contacts
-                .map__contacts-header
-                    h3.common-title.common-title--small Контакты
-                .map__contacts-wrapper
-                    +contacts(contacts, "map")
-            .map__footer
-                +footer("transparent")
+    +page-header("double")
+    section.detail-info
+        .detail-info__column.detail-info__column--about
+            .detail-info__header
+                h1.common-title.common-title--about Обо мне
+            .detail-info__about
+                .detail-info__photo-wrapper
+                    img.detail-info__photo(src="./img/userpics/avatar.jpg")
+                h3.common-title.common-title--small Кто я
+                p.detail-info__text Я веб разработчик из Саратова. Мне 29 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+                p.detail-info__text Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+        .detail-info__column.detail-info__column--skills
+            .detail-info__title-wrapper
+                h2.common-title.common-title--small Чем я могу быть <br> вам полезен
+            p.detail-info__text Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
+            +skills(skills)
+    section.map#map
+        img.map__image(src="./img/map.png")
+        .map__contacts
+            .map__contacts-header
+                h3.common-title.common-title--small Контакты
+            .map__contacts-wrapper
+                +contacts(contacts, "map")
+        .map__footer
+            +footer("transparent")
 block bottom-scripts
     //-script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASGXjcyIm5tHdWCrRpgClZg2wTxnqLDr8&callback=module.exports.initMap")
     //-script initMap();

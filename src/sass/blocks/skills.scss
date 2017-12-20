@@ -22,6 +22,7 @@
   &__items {
     @include list-style;
     display: flex;
+    flex-wrap: wrap;
   }
 
   &__item {
@@ -32,6 +33,11 @@
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @include small-desktop {
+      width: 110px;
+      height: 110px;
     }
   }
 

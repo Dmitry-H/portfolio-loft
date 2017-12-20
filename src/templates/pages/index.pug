@@ -5,15 +5,10 @@ block variables
     - var title = "Главная страница"
 block content
     main.main-wrapper
-        header.small-header
-            .small-header__logon
-                a.logon-button(href="#") Авторизоваться
+        a.logon-button.main-wrapper__logon(href="#") Авторизоваться
         .main-wrapper__content
-            article.developer-card
-                .developer-card__developer-info
-                    +developer-info
-                .developer-card__socials
-                    +socials(socialItems)
-                .developer-card__menu
-                    +menu(menuItems, "main-nav", 3)
+            article.developer-card.main-wrapper__developer-card
+                +developer-info({mixClass: "developer-card__developer-info"})
+                +socials(socialItems, {mixClass: "developer-card__socials"})
+                +menu(menuItems, "main-nav", 3)
         footer.small-footer © Дмитрий Хайс | создано с любовью в LoftSchool | 2018

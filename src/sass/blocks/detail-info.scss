@@ -8,11 +8,19 @@
     &--about {
       display: flex;
       background-color: #efeee9;
+
+      @include small-desktop {
+        flex-direction: column;
+      }
     }
 
     &--skills {
       padding: 0 40px 65px;
       background-color: #eeebdf;
+
+      @include small-desktop {
+        padding: 0 0 65px 30px;
+      }
     }
   }
 
@@ -23,6 +31,11 @@
   &__header {
     flex-shrink: 0;
     padding-left: 50px;
+
+    @include small-desktop {
+      padding-left: 0;
+      text-align: center;
+    }
   }
 
   &__about {
@@ -32,6 +45,10 @@
     padding: 0 20px;
     flex-grow: 0;
     flex-shrink: 10;
+
+    @include small-desktop {
+      padding: 0 80px;
+    }
   }
 
   &__photo-wrapper {
