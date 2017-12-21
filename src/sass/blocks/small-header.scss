@@ -1,0 +1,14 @@
+.small-header {
+  padding: 24px 151px;
+  display: flex;
+  justify-content: flex-end;
+
+  @include small-desktop {
+    padding: 20px 20px;
+  }
+
+  @include phone {
+    padding: 10px 0;
+    justify-content: center;
+  }
+}

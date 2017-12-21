@@ -97,6 +97,7 @@
     a {
       color: #0071d0;
       text-decoration: none;
+      transition: $decor-animation-delay;
 
       &:hover {
         text-decoration: underline;
