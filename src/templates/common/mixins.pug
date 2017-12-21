@@ -19,13 +19,16 @@ mixin socials(items, addClass)
                     a.socials__link(href=`${items[i].link}` target="_blank")
                         +icon(items[i].name, "socials__image", items[i].name)
 
-mixin menu(items, className, itemsCount)
-    - var max;
-        if itemsCount
-            - max = itemsCount
+mixin menu(items, className, settings)
+    - var max, rootClass = className
+    if settings
+        if settings.itemsCount
+            - max = settings.itemsCount
         else
             - max = items.length
-    nav(class=className)
+        if settings.mixClass
+            - rootClass += ` ${settings.mixClass}`
+    nav(class=rootClass)
         ul(class=`${className}__items`)
             - for (var i = 0; i < max; i++)
                 li(class=`${className}__item`)
@@ -91,12 +94,12 @@ mixin footer(modifier)
         if modifier
             - classNames += ` ${classNames}--${modifier}`
     footer(class=classNames)
-        .page-footer__column
+        .page-footer__column.page-footer__column--description
             span.page-footer__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
             span.page-footer__autor © Хайс Дмитрий
             span.page-footer__loweloft Создано с любовью в LoftSchool | 2018
         .page-footer__column.page-footer__column--links
-            +menu(menuItems, "footer-nav")
+            +menu(menuItems, "footer-nav", {mixClass: "page-footer__nav"})
             +socials(socialItems)
         .page-footer__column.page-footer__column--contacts
             +contacts(contacts)

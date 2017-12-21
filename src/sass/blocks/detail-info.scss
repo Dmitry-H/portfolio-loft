@@ -11,6 +11,7 @@
 
       @include small-desktop {
         flex-direction: column;
+        padding-bottom: 40px;
       }
     }
 
@@ -71,6 +72,46 @@
 
     &:last-of-type {
       margin-bottom: 0;
+    }
+  }
+
+  @include tablet {
+    flex-direction: column;
+
+    &__column {
+      width: 100%;
+
+      &--skills {
+        padding: 0 65px 30px;
+      }
+    }
+
+    &__about {
+      padding: 0 147px;
+    }
+
+    &__text {
+      font-size: 14px;
+
+      &--profit {
+        padding: 0 87px;
+      }
+    }
+  }
+
+  @include phone {
+    &__about {
+      padding: 0;
+    }
+
+    &__text {
+      padding: 0 10px;
+    }
+
+    &__column {
+      &--skills {
+        padding: 0 0 30px;
+      }
     }
   }
 }

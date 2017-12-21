@@ -6,9 +6,9 @@
   align-items: center;
   background: url(../img/portfolio_header.svg) no-repeat center,
               url(../img/bg.svg) no-repeat left bottom,
-              url(../img/header-bg.jpg) no-repeat;
+              url(../img/header-bg.jpg) no-repeat top center;
   background-color: #e1d0b0;
-  background-size: auto, 100% auto, cover;
+  background-size: contain, 100% auto, cover;
 
   &__label-image {
     width: 1175.495px;
@@ -49,14 +49,38 @@
   &--double {
     background: url(../img/portfolio_header.svg) no-repeat center,
                 url(../img/bg-2.svg) no-repeat left bottom,
-                url(../img/header-bg.jpg) no-repeat;
+                url(../img/header-bg.jpg) no-repeat top center;
     background-color: #e1d0b0;
-    background-size: auto, 100% auto, cover;
+    background-size: contain, 100% auto, cover;
   }
 
   &__header-description {
     font-family: $robotoregular;
     font-size: 16px;
     color: #fff;
+  }
+
+  @include tablet {
+    padding-bottom: 45px;
+
+    &__header {
+      margin-bottom: 27px;
+    }
+
+    &__developer-info {
+      margin-bottom: 103px;
+    }
+  }
+
+  @include phone {
+
+    &__header {
+      margin-bottom: 70px;
+      padding: 8px 10px;
+    }
+
+    &__developer-info {
+      margin-bottom: 171px;
+    }
   }
 }

@@ -65,4 +65,36 @@
     color: #cd8920;
     text-align: center;
   }
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__category-title {
+      font-size: 23px;
+    }
+  }
+
+  @include phone {
+
+    &__category {
+      margin-bottom: 0;
+    }
+
+    &__items {
+      justify-content: space-around;
+    }
+
+    &__item {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+  }
 }

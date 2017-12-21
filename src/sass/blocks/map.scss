@@ -28,4 +28,17 @@
     right: 0;
     bottom: 0;
   }
+
+  @include tablet {
+    min-height: 745px;
+
+    &__contacts {
+      top: 112px;
+      transform: translate(-50%, 0);
+    }
+
+    &__contacts-wrapper {
+      padding: 0 39px 20px 40px;
+    }
+  }
 }

@@ -29,4 +29,15 @@
   &--header &__name {
     font-size: 35px;
   }
+
+  @include phone {
+
+    &--header &__name {
+      font-size: 21px;
+    }
+
+    &__descriptin {
+      font-size: 14px;
+    }
+  }
 }

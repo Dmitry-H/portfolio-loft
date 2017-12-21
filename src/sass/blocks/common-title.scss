@@ -1,6 +1,6 @@
 .common-title {
   display: inline-block;
-  padding: 70px 70px;
+  padding: 70px;
   position: relative;
   margin: 0;
   font-weight: normal;
@@ -63,6 +63,26 @@
 
     &::before, &::after {
       background: url(../img/ellipse-3-light.svg) no-repeat;
+    }
+  }
+
+  @include tablet {
+    padding: 54px;
+    font-size: 49px;
+
+    &--small {
+      padding: 24px 26px;
+      font-size: 30px;
+    }
+  }
+
+  @include phone {
+    padding: 39px;
+    font-size: 35px;
+
+    &--small {
+      font-size: 21px;
+      padding: 24px 26px;
     }
   }
 }
