@@ -41,4 +41,13 @@
       padding: 0 39px 20px 40px;
     }
   }
+
+  @include phone {
+    min-height: 1195px;
+
+    &__contacts {
+      position: static;
+      transform: none;
+    }
+  }
 }

@@ -26,10 +26,19 @@
   }
 
   @include tablet {
-    font-size: 14px;
 
     &__item {
       margin-right: 15px;
+    }
+
+    &__link {
+      font-size: 14px;
+    }
+  }
+
+  @include phone {
+    &__item {
+      margin-right: 10px;
     }
   }
 }

@@ -40,3 +40,15 @@
     @content;
   }
 }
+
+@mixin vetical-line {
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: 20px;
+    width: 100%;
+    height: 1px;
+    background-color: #757572;
+  }
+}

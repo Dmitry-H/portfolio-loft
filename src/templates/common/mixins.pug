@@ -68,10 +68,13 @@ mixin feedbacks(items)
                     b.feedback__name= items[i].name
                     span.feedback__position= items[i].position
 
-mixin contacts(items, modifier)
+mixin contacts(items, addClass)
     - var classNames = "contacts";
-        if modifier
-            - classNames += ` ${classNames}--${modifier}`
+    if addClass
+        if addClass.modifier
+            - classNames += ` ${classNames}--${addClass.modifier}`
+        if addClass.mixClass
+            - classNames += ` ${addClass.mixClass}`
     ul(class=classNames)
         each item, itemName in items
             li(class = `contacts__item contacts__item--${itemName}`)= item
