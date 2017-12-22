@@ -81,6 +81,10 @@
     &__column {
       width: 100%;
 
+      &--about {
+        background-color: #f9f8f0;
+      }
+
       &--skills {
         padding: 0 65px 30px;
       }

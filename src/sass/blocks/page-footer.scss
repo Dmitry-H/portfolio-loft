@@ -64,7 +64,7 @@
         position: relative;
         width: 100%;
         text-align: center;
-        @include vetical-line;
+        @include vetical-line(1px, #797c7e, 20px);
       }
 
       &--links {
@@ -114,7 +114,7 @@
       }
 
       &--links {
-        @include vetical-line;
+        @include vetical-line(1px, #797c7e, 20px);
       }
     }
 

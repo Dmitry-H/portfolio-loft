@@ -41,14 +41,14 @@
   }
 }
 
-@mixin vetical-line {
+@mixin vetical-line($size, $color, $top) {
   &::after {
     content: '';
     display: block;
     position: relative;
-    top: 20px;
+    top: $top;
     width: 100%;
-    height: 1px;
-    background-color: #757572;
+    height: $size;
+    background-color: $color;
   }
 }
