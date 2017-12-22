@@ -1,8 +1,12 @@
 .socials {
-  @include list-style;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
+
+  &__items {
+    @include list-style;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__item {
     margin-right: 25px;
@@ -14,15 +18,41 @@
 
   &__link {
     display: block;
+  }
+
+  &__image {
+    display: block;
     opacity: 0.7;
+    fill: #fff;
     transition: $decor-animation-delay;
 
     &:hover {
       opacity: 1;
     }
+
+    &--vk {
+      width: 30.011px;
+      height: 17.123px;
+    }
+
+    &--github {
+      width: 26px;
+      height: 22px;
+    }
+
+    &--in {
+      width: 24px;
+      height: 22.938px;
+    }
   }
 
-  &__image {
-    display: block;
+  &--header {
+    .socials__image {
+      opacity: 1;
+
+      &:hover {
+        fill: #cd8920;
+      }
+    }
   }
 }

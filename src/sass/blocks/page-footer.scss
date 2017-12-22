@@ -1,0 +1,56 @@
+.page-footer {
+  display: flex;
+  background-color: #4f4c46;
+  font-family: $robotolight;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+
+  &__column {
+    flex: 1;
+    padding: 25px 30px;
+
+    &--links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      box-shadow: -26px 0 0 -25px #74726e,
+                  26px 0 0 -25px #74726e;
+    }
+
+    @include  small-desktop {
+      flex: 0 1 auto;
+
+      &--links {
+        flex: 1 0 auto;
+      }
+
+      &--contacts {
+        flex: 1 0 auto;
+      }
+    }
+  }
+
+  &__description {
+    display: block;
+  }
+
+  &__autor {
+    display: block;
+    opacity: 0.5;
+  }
+
+  &__loweloft {
+    display: block;
+    opacity: 0.5;
+  }
+
+  &__contacts {
+    opacity: 0.5;
+  }
+
+  &--transparent {
+    background-color: rgba(#4f4c46, 0.65);
+  }
+}

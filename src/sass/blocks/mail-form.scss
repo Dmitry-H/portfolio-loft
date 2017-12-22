@@ -1,0 +1,55 @@
+.mail-form {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(#ddc9aa, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 0 20px;
+  }
+
+  &__input-field {
+    margin-bottom: 20px;
+    padding: 13px 20px;
+    width: 340px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: $robotoregular;
+    font-size: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__message {
+    height: 140px;
+    resize: none;
+  }
+
+  &__controls {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    margin-right: 2px;
+    flex-shrink: 2;
+    width: 50%;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

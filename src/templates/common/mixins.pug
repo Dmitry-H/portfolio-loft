@@ -1,13 +1,112 @@
-mixin socials(items)
-    ul.socials
-        - for (var i = 0; i < items.length; i++)
-            li.socials__item
-                a.socials__link(href=`${items[i].link}` target="_blank")
-                    img.socials__image(src=`./img/${items[i].name}.svg`)
+mixin icon(name, className, modifier)
+    - var classNames = className;
+        if modifier
+            - classNames += ` ${className}--${modifier}`
+    svg(class=`${classNames}`)
+        use(xlink:href=`./img/sprite.svg#${name}`)
 
-mixin menu(items)
-    nav.main-nav
-        ul.main-nav__items
+mixin socials(items, addClass)
+    - var classNames = "socials";
+    if addClass
+        if addClass.modifier
+            - classNames += ` ${classNames}--${addClass.modifier}`
+        if addClass.mixClass
+            - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        ul.socials__items
             - for (var i = 0; i < items.length; i++)
-                li.main-nav__item
-                    a.main-nav__link(href=`${items[i].page}.html`) #{items[i].name}
+                li.socials__item
+                    a.socials__link(href=`${items[i].link}` target="_blank")
+                        +icon(items[i].name, "socials__image", items[i].name)
+
+mixin menu(items, className, itemsCount)
+    - var max;
+        if itemsCount
+            - max = itemsCount
+        else
+            - max = items.length
+    nav(class=className)
+        ul(class=`${className}__items`)
+            - for (var i = 0; i < max; i++)
+                li(class=`${className}__item`)
+                    a(class=`${className}__link` href=`${items[i].page}`) #{items[i].name}
+
+mixin developer-photo(addClass)
+    - var classNames = "developer-photo";
+        if addClass
+            if addClass.modifier
+                - classNames += ` ${classNames}--${addClass.modifier}`
+            if addClass.mixClass
+                - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        img.developer-photo__image(src="./img/userpics/avatar.jpg" alt="Моё фото")
+
+mixin developer-info(addClass)
+    - var classNames = "developer-info";
+    if addClass
+        if addClass.modifier
+            - classNames += ` ${classNames}--${addClass.modifier}`
+        if addClass.mixClass
+            - classNames += ` ${addClass.mixClass}`
+    div(class= classNames)
+        +developer-photo({mixClass: "developer-info__photo-wrapper"})
+        .developer-info__text
+            b.developer-info__name Хайс Дмитрий
+            span.developer-info__descriptin Личный сайт веб разработчика
+
+mixin feedbacks(items)
+    - for (var i = 0; i < items.length; i++)
+        li.feedback
+            p.feedback__text= items[i].text
+            .feedback__autor-card
+                .feedback__photo-wrapper
+                    img.feedback__photo(src=`./img/userpics/${items[i].photo}`)
+                .feedback__info
+                    b.feedback__name= items[i].name
+                    span.feedback__position= items[i].position
+
+mixin contacts(items, modifier)
+    - var classNames = "contacts";
+        if modifier
+            - classNames += ` ${classNames}--${modifier}`
+    ul(class=classNames)
+        each item, itemName in items
+            li(class = `contacts__item contacts__item--${itemName}`)= item
+
+mixin skills(skills)
+    ul.skills
+        each item in skills
+            li.skills__category
+                h3.skills__category-title= item[0]
+                ul.skills__items
+                    - for (var i = 1; i < item.length; i++)
+                        li.skills__item
+                            svg.skills__image(viewBox="0 0 110 110")
+                                circle.skills__image-bg(r="45" cx="50%" cy="50%" fill="none")
+                                circle.skills__image-level(r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)")
+                            span.skills__label= item[i]
+
+mixin footer(modifier)
+    - var classNames = "page-footer";
+        if modifier
+            - classNames += ` ${classNames}--${modifier}`
+    footer(class=classNames)
+        .page-footer__column
+            span.page-footer__description Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+            span.page-footer__autor © Хайс Дмитрий
+            span.page-footer__loweloft Создано с любовью в LoftSchool | 2018
+        .page-footer__column.page-footer__column--links
+            +menu(menuItems, "footer-nav")
+            +socials(socialItems)
+        .page-footer__column.page-footer__column--contacts
+            +contacts(contacts)
+
+mixin page-header(modifier)
+    - var classNames = "page-header";
+        if modifier
+            - classNames += ` ${classNames}--${modifier}`
+    header(class=classNames)
+        include ../blocks/header-header
+        +developer-info({modifier: "header", mixClass: "page-header__developer-info"})
+        a.page-header__arrow-down(href="#")
+            +icon("arrow_down", "navigate-arrow")

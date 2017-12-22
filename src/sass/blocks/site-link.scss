@@ -1,0 +1,17 @@
+.site-link {
+  display: inline-block;
+  padding: 14px 21px;
+  padding-left: 48px;
+  background: url(../img/link.svg) no-repeat 18px center;
+  background-color: #efab26;
+  font-family: $robotomedium;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: $decor-animation-delay;
+
+  &:hover {
+    background-color: #cd8920;
+  }
+}

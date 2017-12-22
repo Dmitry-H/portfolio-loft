@@ -1,3 +1,62 @@
 .page-header {
+  padding-bottom: 67px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url(../img/portfolio_header.svg) no-repeat center,
+              url(../img/bg.svg) no-repeat left bottom,
+              url(../img/header-bg.jpg) no-repeat;
   background-color: #e1d0b0;
+  background-size: auto, 100% auto, cover;
+
+  &__label-image {
+    width: 1175.495px;
+    height: 313.961px;
+    fill: rgba(#cd8920, 0.1)
+  }
+
+  &__header {
+    display: flex;
+    align-self: stretch;
+    margin-bottom: 64px;
+    padding: 25px 29px;
+  }
+
+  &__humburger-button {
+    margin-left: auto;
+  }
+
+  &__developer-info {
+    margin-bottom: 139px;
+  }
+
+  &__arrow-down {
+    display: block;
+  }
+
+  &--blog {
+    background: url(../img/bg.svg) no-repeat left bottom,
+                url(../img/header-bg.jpg) no-repeat;
+    background-color: #e1d0b0;
+    background-size: 100% auto, cover;
+
+    .page-header__header {
+      margin-bottom: 0;
+    }
+  }
+
+  &--double {
+    background: url(../img/portfolio_header.svg) no-repeat center,
+                url(../img/bg-2.svg) no-repeat left bottom,
+                url(../img/header-bg.jpg) no-repeat;
+    background-color: #e1d0b0;
+    background-size: auto, 100% auto, cover;
+  }
+
+  &__header-description {
+    font-family: $robotoregular;
+    font-size: 16px;
+    color: #fff;
+  }
 }

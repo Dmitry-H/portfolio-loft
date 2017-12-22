@@ -1,0 +1,15 @@
+.humburger-button {
+  display: block;
+
+  &__icon {
+    width: 40px;
+    height: 35px;
+    fill: #fff;
+    opacity: 0.7;
+    transition: $decor-animation-delay;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

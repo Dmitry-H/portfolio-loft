@@ -1,0 +1,40 @@
+.contacts {
+  @include list-style;
+  font-family: $robotolight;
+  line-height: 26px;
+  opacity: 0.5;
+
+
+
+  &--map {
+    opacity: 1;
+
+    .contacts__item {
+      padding: 6px 0;
+      padding-left: 34px;
+      background: no-repeat left center;
+      font-family: $robotomedium;
+      font-size: 16px;
+      color: rgba(#5d5a55, 0.8);
+
+      &--skype {
+        background-image: url(../img/skype.svg);
+      }
+
+      &--email {
+        background-image: url(../img/email.svg);
+
+      }
+
+      &--phone {
+        background-image: url(../img/phone.svg);
+
+      }
+
+      &--address {
+        background-image: url(../img/map_marker.svg);
+
+      }
+    }
+  }
+}

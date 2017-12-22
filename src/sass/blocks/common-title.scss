@@ -1,0 +1,68 @@
+.common-title {
+  display: inline-block;
+  padding: 70px 70px;
+  position: relative;
+  margin: 0;
+  font-weight: normal;
+  font-family: $sansus_webissimoregular;
+  font-size: 63px;
+  color: #373e42;
+  text-transform: uppercase;
+  text-align: center;
+
+  &::before, &::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 14px;
+    position: absolute;
+    background: url(../img/ellipse-3.svg) no-repeat;
+  }
+
+  &::before {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::after {
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%) rotate(180deg);
+  }
+
+  &--small {
+    padding: 40px 26px;
+    font-size: 35px;
+    color: #5d5a55;
+
+    &::before, &::after {
+      width: 21px;
+      height: 10px;
+      background-image: url(../img/ellipse-2.svg);
+    }
+  }
+
+  &--works {
+    background: url(../img/works_header.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--about {
+    background: url(../img/about_header.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--blog {
+    background: url(../img/blog_header.svg) no-repeat center;
+    background-size: contain;
+  }
+
+  &--light {
+    color: #fff;
+
+    &::before, &::after {
+      background: url(../img/ellipse-3-light.svg) no-repeat;
+    }
+  }
+}

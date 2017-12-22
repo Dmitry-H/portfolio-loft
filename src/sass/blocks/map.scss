@@ -1,0 +1,31 @@
+.map {
+  position: relative;
+  width: 100%;
+
+  &__image {
+    display: block;
+    width: 100%;
+    min-height: 150px;
+  }
+
+  &__contacts {
+    @include absolute-center;
+    background-color: rgba(#fcfcfc, 0.85);
+    border-radius: 5px;
+  }
+
+  &__contacts-wrapper {
+    padding: 0 72px 30px 40px;
+  }
+
+  &__contacts-header {
+    text-align: center;
+  }
+
+  &__footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

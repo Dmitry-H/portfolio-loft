@@ -1,0 +1,15 @@
+.navigate-arrow {
+  width: 25.18px;
+  height: 16.164px;
+  fill: #fff;
+  opacity: 0.7;
+  transition: $decor-animation-delay;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &--up {
+    transform: rotate(180deg);
+  }
+}

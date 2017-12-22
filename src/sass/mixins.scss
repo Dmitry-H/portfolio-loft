@@ -3,3 +3,40 @@
   padding: 0;
   list-style: none;
 }
+
+@mixin absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin small-desktop {
+  @media (max-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 960px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 720px) {
+    @content;
+  }
+}
+
+@mixin phone-small {
+  @media (min-width: 400px) and (max-width: 460px) {
+    @content;
+  }
+}
+
+@mixin very-small {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
