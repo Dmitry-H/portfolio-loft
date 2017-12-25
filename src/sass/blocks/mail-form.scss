@@ -52,4 +52,11 @@
       margin-right: 0;
     }
   }
+
+  @include phone {
+    &__input-field {
+      width: 264px;
+      font-size: 14px;
+    }
+  }
 }

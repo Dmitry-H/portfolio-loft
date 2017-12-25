@@ -1,5 +1,11 @@
 .works-slider {
-  display: flex;
+  //display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 70% 30%;
+  grid-template-areas:
+    "info slide"
+    "info navigation";
 
 
   &__info {
@@ -7,14 +13,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    //padding: 205px 240px;
-    width: 50%;
+    grid-area: info;
     box-sizing: border-box;
     background-color: #f4f0e9;
-
-    @include small-desktop {
-      //padding: 240px 90px;
-    }
   }
 
   &__technologies {
@@ -31,20 +32,13 @@
     border-bottom: 1px solid #aeaeab;
   }
 
-  &__images {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    box-sizing: border-box;
-    background-color: #ebe5db;
-  }
-
   &__slide {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 65px 0 40px;
+    grid-area: slide;
+    background-color: #ebe5db;
 
     @include small-desktop {
       padding: 114px 64px 117px;
@@ -59,6 +53,7 @@
   &__navigation-slides {
     display: flex;
     min-height: 220px;
+    grid-area: navigation;
   }
 
   &__navigation-slide {
@@ -102,5 +97,48 @@
     fill: #fff;
     opacity: 0.7;
     transition: $decor-animation-delay;
+  }
+
+  @include tablet {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "slide"
+      "info"
+      "navigation";
+
+    &__info {
+      padding: 20px 0 60px;
+    }
+
+    &__technologies {
+      margin-bottom: 10px;
+    }
+
+    &__slide {
+      padding: 105px 77px 45px;
+    }
+  }
+
+  @include phone {
+
+    &__info {
+      padding-bottom: 26px;
+    }
+
+    &__technologies {
+      margin-bottom: 20px;
+      padding: 7px 0;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    &__slide {
+      padding: 49px 36px 45px;
+    }
+
+    &__navigation-slides {
+      min-height: initial;
+    }
   }
 }

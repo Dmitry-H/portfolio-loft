@@ -3,16 +3,20 @@ extends ../page-template
 
 block variables
     - var title = "Главная страница"
+//-block html
+//-    html.index-html(lang="ru")
+//-block body
+//-    body.index-body
 block content
     main.main-wrapper
-        header.small-header
+        header.small-header.main-wrapper__header
             a.logon-button.small-header__logon(href="#") Авторизоваться
         .main-wrapper__content
             article.developer-card.main-wrapper__developer-card
                 +developer-info({mixClass: "developer-card__developer-info"})
                 +socials(socialItems, {mixClass: "developer-card__socials"})
                 +menu(menuItems, "main-nav", {itemsCount: 3})
-        footer.small-footer
+        footer.small-footer.main-wrapper__footer
             span.small-footer__name © Дмитрий Хайс
             span.small-footer__separator=  " | "
             span.small-footer__description создано с любовью в LoftSchool | 2018

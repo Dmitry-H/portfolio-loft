@@ -1,19 +1,36 @@
 .main-wrapper {
   position: relative;
   min-height: 100%;
-  display: flex;
+  //display: flex;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
   flex-direction: column;
   background: #b06d30 url(../img/sand.jpg);
   background-size: cover;
+  min-width: 320px;
+
+  &__header {
+    grid-area: header;
+  }
 
   &__content {
     flex: 1 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: content;
   }
 
   &__developer-card {
     padding-top: 40px;
+  }
+
+  &__footer {
+    grid-area: footer;
   }
 }
