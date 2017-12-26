@@ -10,15 +10,15 @@ block variables
 block content
     main.main-wrapper
         header.small-header.main-wrapper__header
-            a.logon-button.small-header__logon(href="#") Авторизоваться
+            a.logon-button.small-header__logon#logon(href="#") Авторизоваться
         .main-wrapper__content
             .main-wrapper__flip-container
-                article.developer-card.main-wrapper__developer-card
+                article.developer-card.main-wrapper__developer-card.main-wrapper__welcome-side
                     +developer-info({mixClass: "developer-card__developer-info"})
                     +socials(socialItems, {mixClass: "developer-card__socials"})
                     +menu(menuItems, "main-nav", {itemsCount: 3})
-                article.logon-card
-                    form.main-wrapper__logon-form
+                form.main-wrapper__logon-form.main-wrapper__logon-side
+                    article.logon-card
                         .logon-card__header
                             h2.common-title.common-title--light.common-title--small Авторизуйтесь
                         .logon-card__fields
@@ -36,8 +36,8 @@ block content
                             input.logon-card__radio(type="radio" id="no-robot-no" name="no-robot" value="no")
                             label.logon-card__input-label.logon-card__input-label--radio(for="no-robot-no") Не уверен
                         .logon-card__controls
-                            button.button.logon-card__button На главную
-                            button.button.logon-card__button Войти
+                            button.button.logon-card__button#back На главную
+                            button.button.logon-card__button(type="submit") Войти
         footer.small-footer.main-wrapper__footer
             span.small-footer__name © Дмитрий Хайс
             span.small-footer__separator=  " | "

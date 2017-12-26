@@ -1,6 +1,7 @@
 .logon-card {
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   background-color: rgba(#d7bf9b, 0.6);
   border-radius: 5px;
 
@@ -10,7 +11,7 @@
 
   &__fields {
     margin-bottom: 20px;
-    padding: 0 20px;
+    padding: 0 21px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,6 +172,18 @@
 
     &:last-child {
       margin-right: 0;
+    }
+  }
+
+  @include tablet {
+    &__input-field {
+      width: 308px;
+    }
+  }
+
+  @include phone {
+    &__input-field {
+      width: 261px;
     }
   }
 }

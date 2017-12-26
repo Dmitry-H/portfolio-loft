@@ -1,7 +1,3 @@
-for (let i = 0; i < 10; i++) {
-  console.log(`Итерация ${i}`);
-}
-
 /*
 function initMap() {
   let zoom;
@@ -55,7 +51,35 @@ function initMap() {
 
   console.log('MAP!!!!!!!!!!!!!!');
 }
-exports.initMap = initMap;
 
 
 console.log('1111');
+const flip = (function() {
+  const logon = document.getElementById('logon');
+  const flipContainer = document.getElementsByClassName('main-wrapper__flip-container')[0];
+  const back = document.getElementById('back');
+  const flippedClass = 'main-wrapper__flip-container--fliped';
+
+  function _init () {
+    logon.addEventListener('click', _showLogon);
+    back.addEventListener('click', _hideLogon);
+  }
+
+  function _showLogon (e) {
+    e.preventDefault();
+    flipContainer.classList.add(flippedClass);
+    logon.style.opacity = 0;
+  }
+
+  function _hideLogon(e) {
+    e.preventDefault();
+    flipContainer.classList.remove(flippedClass);
+    logon.style.opacity = 1;
+  }
+
+  return {
+    init: _init,
+  };
+})();
+
+flip.init();
