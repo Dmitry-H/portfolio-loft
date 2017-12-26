@@ -1,7 +1,6 @@
 .main-wrapper {
   position: relative;
   min-height: 100%;
-  //display: flex;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
@@ -9,7 +8,6 @@
     "header"
     "content"
     "footer";
-  flex-direction: column;
   background: #b06d30 url(../img/sand.jpg);
   background-size: cover;
   min-width: 320px;
@@ -19,7 +17,6 @@
   }
 
   &__content {
-    flex: 1 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;

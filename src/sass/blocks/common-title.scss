@@ -66,6 +66,12 @@
     }
   }
 
+  &--small.common-title--light {
+    &::before, &::after {
+      height: 12px;
+    }
+  }
+
   @include tablet {
     padding: 54px;
     font-size: 49px;
