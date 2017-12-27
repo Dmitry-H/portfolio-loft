@@ -39,27 +39,32 @@ function initMap() {
 }*/
 
 function initMap() {
-  /*var uluru = {lat: -25.363, lng: 131.044};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru,
+  let center = {lat: 51.495800, lng: 45.940374};
+  let home = {lat: 51.4960512, lng: 45.9432219};
+  let map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 18,
+    center: center,
   });
-  var marker = new google.maps.Marker({
-    position: uluru,
+  let marker = new google.maps.Marker({
+    position: home,
     map: map,
-  });*/
+    icon: 'img/map_marker.svg',
+    gestureHandling: 'none'
+  });
 
-  console.log('MAP!!!!!!!!!!!!!!');
 }
 
+window.initMap = initMap;
 
-/*const flip = (function() {
+const flip = (function() {
   const logon = document.getElementById('logon');
   const flipContainer = document.getElementsByClassName('main-wrapper__flip-container')[0];
   const back = document.getElementById('back');
   const flippedClass = 'main-wrapper__flip-container--fliped';
 
   function _init () {
+    if (!logon || !back) return;
+
     logon.addEventListener('click', _showLogon);
     back.addEventListener('click', _hideLogon);
   }
@@ -79,13 +84,15 @@ function initMap() {
   return {
     init: _init
   };
-})();*/
+})();
 
-/*const bgPosition = (function () {
+const bgPosition = (function () {
   const bgElement = document.getElementsByClassName('about-me')[0];
   const positionElement = document.getElementsByClassName('mail-form')[0];
 
   function _init() {
+    if (!bgElement || !positionElement) return;
+
     window.addEventListener('resize', _setPosition);
     _setPosition();
   }
@@ -100,7 +107,7 @@ function initMap() {
   return {
     init: _init,
   };
-})();*/
+})();
 
 const bgAnimation = (function() {
   const bgContainer = document.getElementsByClassName('main-wrapper')[0];
@@ -108,6 +115,7 @@ const bgAnimation = (function() {
   let currentPosition = 0;
 
   function _init() {
+    if (!bgContainer) return;
     setInterval(_moveBg, animationDelay);
   }
 
@@ -119,7 +127,7 @@ const bgAnimation = (function() {
     init: _init
   };
 })();
-// flip.init();
-// window.addEventListener('load', bgPosition.init);
+flip.init();
+window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
 

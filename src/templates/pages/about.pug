@@ -20,14 +20,14 @@ block content
                 h2.common-title.common-title--small Чем я могу быть <br> вам полезен
             p.detail-info__text.detail-info__text--profit Больше всего меня привлекет Frontend разработка, но я также знаком и могу решать не сложные задачи на Backend. Но давайте по порядку.
             +skills(skills)
-    section.map#map
+    section.map
+        .map__google-map#map
         .map__contacts
             .map__contacts-header
                 h3.common-title.common-title--small Контакты
             +contacts(contacts, {mixClass: "map__contacts-wrapper", modifier: "map"})
-        img.map__image(src="./img/map.png")
+        //-img.map__image(src="./img/map.png")
         .map__footer
             +footer("transparent")
 block bottom-scripts
-    //-script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASGXjcyIm5tHdWCrRpgClZg2wTxnqLDr8&callback=module.exports.initMap")
-    //-script initMap();
+    script(async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASGXjcyIm5tHdWCrRpgClZg2wTxnqLDr8&callback=window.initMap")
