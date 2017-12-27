@@ -1,9 +1,22 @@
 .mail-form {
   display: flex;
   flex-direction: column;
-  background-color: rgba(#ddc9aa, 0.3);
-  border-radius: 5px;
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../img/about-me-bg.png) no-repeat;
+    background-position: inherit;
+    z-index: -10;
+    filter: blur(20px);
+  }
 
   &__header {
     text-align: center;

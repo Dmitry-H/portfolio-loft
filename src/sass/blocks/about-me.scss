@@ -3,10 +3,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: url(../img/about-me-bg.png) no-repeat left bottom;
+  background: url(../img/about-me-bg.png) no-repeat left top;
   background-color: #f0e6d2;
-  background-size: 100% auto;
-
+  //background-size: 1920px;
+  background-size: cover;
+  position: relative;
 
   &__header {
     text-align: center;
@@ -20,6 +21,8 @@
 
   &__contact {
     margin-bottom: 70px;
+    border-radius: 5px;
+    overflow: hidden;
   }
 
   @include tablet {

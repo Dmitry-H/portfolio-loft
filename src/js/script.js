@@ -53,8 +53,7 @@ function initMap() {
 }
 
 
-console.log('1111');
-const flip = (function() {
+/*const flip = (function() {
   const logon = document.getElementById('logon');
   const flipContainer = document.getElementsByClassName('main-wrapper__flip-container')[0];
   const back = document.getElementById('back');
@@ -78,8 +77,31 @@ const flip = (function() {
   }
 
   return {
+    init: _init
+  };
+})();*/
+
+const bgPosition = (function () {
+  const bgElement = document.getElementsByClassName('about-me')[0];
+  const positionElement = document.getElementsByClassName('mail-form')[0];
+
+  function _init() {
+    window.addEventListener('resize', _setPosition);
+    _setPosition();
+  }
+
+  function _setPosition() {
+    const posX = positionElement.offsetLeft;
+    const posY = positionElement.offsetTop;
+    positionElement.style.backgroundPosition = `-${posX}px -${posY}px`;
+    positionElement.style.backgroundSize = bgElement.offsetWidth + 'px';
+  }
+
+  return {
     init: _init,
   };
 })();
 
-flip.init();
+// flip.init();
+window.addEventListener('load', bgPosition.init);
+
