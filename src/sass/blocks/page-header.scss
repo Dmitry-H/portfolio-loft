@@ -3,7 +3,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
   background: url(../img/portfolio_header.svg) no-repeat center,
               url(../img/bg.svg) no-repeat left bottom,
               url(../img/header-bg.jpg) no-repeat top center;
@@ -40,6 +43,7 @@
   }
 
   &--blog {
+    height: auto;
     background: url(../img/bg.svg) no-repeat left bottom,
                 url(../img/header-bg.jpg) no-repeat;
     background-color: #e1d0b0;
