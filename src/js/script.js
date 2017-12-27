@@ -81,7 +81,7 @@ function initMap() {
   };
 })();*/
 
-const bgPosition = (function () {
+/*const bgPosition = (function () {
   const bgElement = document.getElementsByClassName('about-me')[0];
   const positionElement = document.getElementsByClassName('mail-form')[0];
 
@@ -100,8 +100,26 @@ const bgPosition = (function () {
   return {
     init: _init,
   };
-})();
+})();*/
 
+const bgAnimation = (function() {
+  const bgContainer = document.getElementsByClassName('main-wrapper')[0];
+  const animationDelay = 50;
+  let currentPosition = 0;
+
+  function _init() {
+    setInterval(_moveBg, animationDelay);
+  }
+
+  function _moveBg () {
+    bgContainer.style.backgroundPositionX = `-${++currentPosition}px`;
+  }
+
+  return {
+    init: _init
+  };
+})();
 // flip.init();
-window.addEventListener('load', bgPosition.init);
+// window.addEventListener('load', bgPosition.init);
+window.addEventListener('load', bgAnimation.init);
 

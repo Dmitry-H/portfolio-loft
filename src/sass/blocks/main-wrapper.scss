@@ -8,9 +8,10 @@
     "header"
     "content"
     "footer";
-  background: #b06d30 url(../img/sand.jpg);
-  background-size: cover;
   min-width: 320px;
+  background: #b06d30 url(../img/sand.jpg) repeat-x;
+  //background-size: cover;
+  background-size: auto 100%;
 
   &__header {
     grid-area: header;
