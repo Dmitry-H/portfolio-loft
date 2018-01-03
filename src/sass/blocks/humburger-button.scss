@@ -12,4 +12,12 @@
       opacity: 1;
     }
   }
+
+  @include phone {
+
+    &__icon {
+      width: 29px;
+      height: 26px;
+    }
+  }
 }

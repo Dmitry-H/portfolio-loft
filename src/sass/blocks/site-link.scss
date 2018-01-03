@@ -14,4 +14,8 @@
   &:hover {
     background-color: #cd8920;
   }
+
+  @include phone {
+    font-size: 14px;
+  }
 }

@@ -3,12 +3,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
   background: url(../img/portfolio_header.svg) no-repeat center,
               url(../img/bg.svg) no-repeat left bottom,
-              url(../img/header-bg.jpg) no-repeat;
+              url(../img/header-bg.jpg) no-repeat top center;
   background-color: #e1d0b0;
-  background-size: auto, 100% auto, cover;
+  background-size: contain, 100% auto, cover;
 
   &__label-image {
     width: 1175.495px;
@@ -33,9 +36,14 @@
 
   &__arrow-down {
     display: block;
+
+    &--blog {
+      display: none;
+    }
   }
 
   &--blog {
+    height: auto;
     background: url(../img/bg.svg) no-repeat left bottom,
                 url(../img/header-bg.jpg) no-repeat;
     background-color: #e1d0b0;
@@ -49,14 +57,68 @@
   &--double {
     background: url(../img/portfolio_header.svg) no-repeat center,
                 url(../img/bg-2.svg) no-repeat left bottom,
-                url(../img/header-bg.jpg) no-repeat;
+                url(../img/header-bg.jpg) no-repeat top center;
     background-color: #e1d0b0;
-    background-size: auto, 100% auto, cover;
+    background-size: contain, 100% auto, cover;
+
+    @include tablet {
+      background: url(../img/portfolio_header.svg) no-repeat center,
+      url(../img/bg.svg) no-repeat left bottom,
+      url(../img/header-bg.jpg) no-repeat top center;
+      background-color: #e1d0b0;
+      background-size: contain, 100% auto, cover;
+    }
   }
 
   &__header-description {
+    display: block;
     font-family: $robotoregular;
     font-size: 16px;
     color: #fff;
+  }
+
+  @include tablet {
+    padding-bottom: 45px;
+
+    &__header {
+      margin-bottom: 27px;
+    }
+
+    &__developer-info {
+      margin-bottom: 103px;
+    }
+
+    &__arrow-down {
+
+      &--blog {
+        display: block;
+      }
+    }
+
+    &__header-description {
+      margin-bottom: 30px;
+    }
+  }
+
+  @include phone {
+
+    &__header {
+      margin-bottom: 70px;
+      padding: 8px 10px;
+    }
+
+    &__developer-info {
+      margin-bottom: 171px;
+    }
+  }
+
+  &--blog {
+    .page-header__header {
+      margin-bottom: 70px
+    }
+  }
+
+  &__header-description {
+    margin-bottom: 100px;
   }
 }

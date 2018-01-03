@@ -55,4 +55,29 @@
       }
     }
   }
+
+  @include phone {
+    &__item {
+      margin-right: 33px;
+    }
+
+    &--header {
+      .socials__image {
+        &--vk {
+          width: 22.152px;
+          height: 12.500px;
+        }
+
+        &--github {
+          width: 19px;
+          height: 16px;
+        }
+
+        &--in {
+          width: 18px;
+          height: 16.938px;
+        }
+      }
+    }
+  }
 }

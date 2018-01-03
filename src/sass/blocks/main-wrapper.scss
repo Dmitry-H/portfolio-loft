@@ -1,25 +1,95 @@
 .main-wrapper {
   position: relative;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  background: #b06d30 url(../img/sand.jpg);
-  background-size: cover;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  min-width: 320px;
+  background: #b06d30 url(../img/sand.jpg) repeat-x;
+  background-size: auto 100%;
 
-  &__logon {
-    position: absolute;
-    right: 151px;
-    top: 24px;
+  @include mobile {
+    background: #b06d30 url(../img/header-bg.jpg) no-repeat;
+    background-size: cover;
+  }
+
+  &__header {
+    grid-area: header;
   }
 
   &__content {
-    flex: 1 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: content;
   }
 
   &__developer-card {
     padding-top: 40px;
+  }
+
+  &__flip-container {
+    display: flex;
+    position: relative;
+    width: 382px;
+    height: 421px;
+    transition: transform 0.6s, opacity 0.3s, visibility 0.3s;
+    transform-style: preserve-3d;
+
+    &--fliped .main-wrapper__welcome-side {
+      transform: rotateY(180deg);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &--fliped .main-wrapper__logon-side {
+      transform: rotateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__welcome-side, &__logon-side {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    z-index: 10;
+  }
+
+  &__welcome-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  &__logon-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotateY(-180deg);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__footer {
+    grid-area: footer;
+  }
+
+  @include tablet {
+    &__flip-container {
+      width: 350px;
+      height: 383px;
+    }
+  }
+
+  @include phone {
+    &__flip-container {
+      width: 303px;
+      height: 372px;
+    }
   }
 }

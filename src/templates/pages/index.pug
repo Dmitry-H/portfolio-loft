@@ -3,12 +3,42 @@ extends ../page-template
 
 block variables
     - var title = "Главная страница"
+//-block html
+//-    html.index-html(lang="ru")
+//-block body
+//-    body.index-body
 block content
     main.main-wrapper
-        a.logon-button.main-wrapper__logon(href="#") Авторизоваться
+        header.small-header.main-wrapper__header
+            a.logon-button.small-header__logon#logon(href="#") Авторизоваться
         .main-wrapper__content
-            article.developer-card.main-wrapper__developer-card
-                +developer-info({mixClass: "developer-card__developer-info"})
-                +socials(socialItems, {mixClass: "developer-card__socials"})
-                +menu(menuItems, "main-nav", 3)
-        footer.small-footer © Дмитрий Хайс | создано с любовью в LoftSchool | 2018
+            .main-wrapper__flip-container
+                article.developer-card.main-wrapper__developer-card.main-wrapper__welcome-side
+                    +developer-info({mixClass: "developer-card__developer-info"})
+                    +socials(socialItems, {mixClass: "developer-card__socials"})
+                    +menu(menuItems, "main-nav", {itemsCount: 3})
+                form.main-wrapper__logon-form.main-wrapper__logon-side
+                    article.logon-card
+                        .logon-card__header
+                            h2.common-title.common-title--light.common-title--small Авторизуйтесь
+                        .logon-card__fields
+                            .logon-card__field-wrapper.logon-card__field-wrapper--login
+                                input.logon-card__input-field(type="text" placeholder="Логин")
+                            .logon-card__field-wrapper.logon-card__field-wrapper--password
+                                input.logon-card__input-field(type="password" placeholder="Пароль")
+                        .logon-card__check-block
+                            input.logon-card__checkbox(type="checkbox" checked="checked" id="i-am-human" name="i-am-human")
+                            label.logon-card__input-label.logon-card__input-label--checkbox(for="i-am-human") Я человек
+                        span.logon-card__mini-title Вы точно не робот?
+                        .logon-card__radio-block
+                            input.logon-card__radio(type="radio" id="no-robot-yes" name="no-robot" value="yes" checked="checked")
+                            label.logon-card__input-label.logon-card__input-label--radio(for="no-robot-yes") Да
+                            input.logon-card__radio(type="radio" id="no-robot-no" name="no-robot" value="no")
+                            label.logon-card__input-label.logon-card__input-label--radio(for="no-robot-no") Не уверен
+                        .logon-card__controls
+                            button.button.logon-card__button#back На главную
+                            button.button.logon-card__button(type="submit") Войти
+        footer.small-footer.main-wrapper__footer
+            span.small-footer__name © Дмитрий Хайс
+            span.small-footer__separator=  " | "
+            span.small-footer__description создано с любовью в LoftSchool | 2018

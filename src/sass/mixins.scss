@@ -35,8 +35,20 @@
   }
 }
 
-@mixin very-small {
-  @media (max-width: 400px) {
+@mixin mobile {
+  @media (max-width: 768px) {
     @content;
+  }
+}
+
+@mixin vetical-line($size, $color, $top) {
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: $top;
+    width: 100%;
+    height: $size;
+    background-color: $color;
   }
 }

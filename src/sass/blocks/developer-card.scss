@@ -1,7 +1,9 @@
 .developer-card {
+  //display: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 382px;
   background-color: rgba(#d7bf9b, 0.6);
   border-radius: 5px 5px 1px 1px;
 
@@ -10,7 +12,24 @@
   }
 
   &__socials {
-    margin-bottom: 44px;
+    //margin-bottom: 44px;
+    margin-bottom: 69px;
     text-align: center;
+  }
+
+  @include tablet {
+    width: 350px;
+
+    &__socials {
+      margin-bottom: 31px;
+    }
+  }
+
+  @include phone {
+    width: 303px;
+
+    &__socials {
+      margin-bottom: 21px;
+    }
   }
 }

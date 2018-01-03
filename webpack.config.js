@@ -4,7 +4,7 @@ const config = {
     output: {
         filename: "script.js"
     },
-    module: {
+/*    module: {
         rules: [
             {
                 test: /\.js$/,
@@ -15,7 +15,7 @@ const config = {
                 }
             }
         ]
-    }
+    }*/
 };
 
 module.exports = config;
