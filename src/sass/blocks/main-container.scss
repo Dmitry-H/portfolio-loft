@@ -1,0 +1,28 @@
+.main-container {
+  position: relative;
+
+  &__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(#e7a731, 0.87);
+    z-index: 50;
+    @include hiddenElement;
+  }
+
+  &__overlay-close {
+    position: absolute;
+    top: 23px;
+    right: 30px;
+  }
+
+  &__fullscreen-menu {
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

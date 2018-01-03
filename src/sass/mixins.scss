@@ -52,3 +52,14 @@
     background-color: $color;
   }
 }
+
+@mixin hiddenElement {
+  opacity: 0;
+  visibility: hidden;
+  transition: $decor-animation-delay;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}

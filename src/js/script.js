@@ -132,7 +132,42 @@ const bgAnimation = (function() {
     init: _init
   };
 })();
+
+const fullscreenMenu = (function() {
+  const overlayClass = "main-container__overlay";
+  const menuClass = "fullscreen-menu";
+
+  const openMenuButton = document.getElementsByClassName("humburger-button")[0];
+  const closeMenuButton = document.getElementsByClassName("main-container__overlay-close")[0];
+  const overlay = document.getElementsByClassName(overlayClass)[0];
+  const menu = document.getElementsByClassName(menuClass)[0];
+
+  function _init() {
+    if (!openMenuButton) return;
+    openMenuButton.addEventListener("click", openMenu);
+    closeMenuButton.addEventListener("click", closeMenu);
+  }
+
+  function openMenu(e) {
+    e.preventDefault();
+    overlay.classList.add(overlayClass + "--visible");
+    menu.classList.add(menuClass + "--visible");
+  }
+
+  function closeMenu(e) {
+    e.preventDefault();
+    overlay.classList.remove(overlayClass + "--visible");
+    menu.classList.remove(menuClass + "--visible");
+  }
+
+  return {
+    init: _init
+  };
+})();
+
+
 flip.init();
+fullscreenMenu.init();
 window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
 

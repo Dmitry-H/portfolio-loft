@@ -116,3 +116,17 @@ mixin page-header(modifier)
         +developer-info({modifier: "header", mixClass: "page-header__developer-info"})
         a.page-header__arrow-down(href="#")
             +icon("arrow_down", "navigate-arrow")
+
+mixin fullscreen-menu(menuItems, currentPage)
+    .main-container__overlay
+        a.close-cross.main-container__overlay-close(href="#")
+    nav.fullscreen-menu.main-container__fullscreen-menu
+        ul.fullscreen-menu__items
+            - for (var i = 0; i < menuItems.length; i++)
+                li.fullscreen-menu__item
+                    if menuItems[i].page == currentPage
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-opacity= menuItems[i].name
+                    else
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-rounds(href=menuItems[i].page)= menuItems[i].name
+
+
