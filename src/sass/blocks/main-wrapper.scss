@@ -12,6 +12,11 @@
   background: #b06d30 url(../img/sand.jpg) repeat-x;
   background-size: auto 100%;
 
+  @include mobile {
+    background: #b06d30 url(../img/header-bg.jpg) no-repeat;
+    background-size: cover;
+  }
+
   &__header {
     grid-area: header;
   }

@@ -116,11 +116,16 @@ const bgAnimation = (function() {
 
   function _init() {
     if (!bgContainer) return;
+    if (_isMobile()) return;
     setInterval(_moveBg, animationDelay);
   }
 
   function _moveBg () {
     bgContainer.style.backgroundPositionX = `-${++currentPosition}px`;
+  }
+
+  function _isMobile() {
+    return window.matchMedia('(max-width: 768px)').matches;
   }
 
   return {
