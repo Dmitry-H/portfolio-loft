@@ -1,5 +1,7 @@
 .main-container {
   position: relative;
+  min-width: 320px;
+  overflow: hidden;
 
   &__overlay {
     position: absolute;
@@ -24,5 +26,29 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  &__swipe-sidebar {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -284px;
+    bottom: 0;
+    z-index: 100;
+    transition: $decor-animation-delay;
+  }
+
+  &__content-wrapper {
+    transition: $decor-animation-delay;
+  }
+
+/*  &--blog {
+  }*/
+
+  @include phone {
+
+    &__swipe-sidebar {
+      display: block;
+    }
   }
 }

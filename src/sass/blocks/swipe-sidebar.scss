@@ -1,0 +1,46 @@
+.swipe-sidebar {
+  padding: 0 17px;
+  width: 284px;
+  box-sizing: border-box;
+  background-color: #e7a731;
+  box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+  transition: $decor-animation-delay;
+
+  &__contents {
+    transform: translateY(560px);
+  }
+
+  &__appendix {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 260px;
+    top: 50%;
+    width: 50px;
+    height: 60px;
+    transform: translateY(-50%);
+    background-color: inherit;
+    border-radius: 50%;
+    box-shadow: inherit;
+  }
+
+  &__article-name {
+    display: block;
+    margin-bottom: 30px;
+    font-family: $robotoregular;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(#fff, 0.7);
+    text-decoration: none;
+    text-align: right;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--active {
+      font-family: $robotomedium;
+      color: #fff;
+    }
+  }
+}

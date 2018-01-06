@@ -24,7 +24,7 @@
 }
 
 @mixin phone {
-  @media (max-width: 720px) {
+  @media (max-width: 800px) { //720
     @content;
   }
 }

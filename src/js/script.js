@@ -165,9 +165,90 @@ const fullscreenMenu = (function() {
   };
 })();
 
+const swipeSidebar = (function() {
+  const sidebar = document.getElementsByClassName("main-container__swipe-sidebar")[0];
+  const contents = document.getElementsByClassName("swipe-sidebar__contents")[0];
+  const appendix =document.getElementsByClassName("swipe-sidebar__appendix")[0];
+  const content =document.getElementsByClassName("main-container__content-wrapper")[0];
+
+  let contentsHeight;
+  let sidebarWidth = sidebar.offsetWidth;
+  let startCoordinate = null;
+
+  function _init() {
+    if (!sidebar) return;
+    contentsHeight = contents.offsetHeight;
+
+    sidebar.addEventListener("touchstart", touchSwipeStart);
+    window.addEventListener("touchend", touchSwipeEnd);
+    sidebar.addEventListener("mousedown", mouseSwipeStart);
+    window.addEventListener("mouseup", MouseSwipeEnd);
+    window.addEventListener("scroll", verticalCenter.bind(null, appendix));
+
+    console.log();
+    verticalCenter.bind(null, appendix);
+  }
+
+  function mouseSwipeStart(e) {
+    e.preventDefault();
+    startCoordinate = e.screenX;
+  }
+
+  function MouseSwipeEnd(e) {
+    e.preventDefault();
+    if (!startCoordinate) return;
+    if (e.screenX > startCoordinate) {
+      openMenu();
+    }
+    else if (e.screenX < startCoordinate) {
+      closeMenu();
+    }
+    startCoordinate = null;
+  }
+
+  function touchSwipeStart(e) {
+    e.preventDefault();
+    startCoordinate = e.changedTouches[0].pageX;
+  }
+
+  function touchSwipeEnd(e) {
+    e.preventDefault();
+    if (!startCoordinate) return;
+    if (e.changedTouches[0].pageX > startCoordinate) {
+      openMenu();
+    }
+    else if (e.changedTouches[0].pageX < startCoordinate) {
+      closeMenu();
+    }
+    startCoordinate = null;
+  }
+
+  function openMenu() {
+    sidebar.style.transform = `translateX(${sidebarWidth}px)`;
+    content.style.transform = `translateX(${sidebarWidth}px)`;
+  }
+
+  function closeMenu() {
+    sidebar.style.transform = `translateX(0px)`;
+    content.style.transform = `translateX(0px)`;
+  }
+
+  function verticalCenter(element, e) {
+    let windowHeight = document.body.clientHeight;
+    let elementHeight = element.offsetHeight;
+    let posY = windowHeight / 2 - elementHeight / 2 + window.pageYOffset;
+    element.style.top = posY + "px";
+  }
+  
+  return {
+    init: _init
+  };
+})();
 
 flip.init();
 fullscreenMenu.init();
+
 window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
+window.addEventListener('load', swipeSidebar.init);
 
