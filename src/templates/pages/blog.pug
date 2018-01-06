@@ -18,11 +18,12 @@ block content
             include ../blocks/blog-header
             section.blog
                 aside.blog__contents
-                    a(href="#").blog__article-name.blog__article-name--active Лучшие фреймворки CSS в 2017 году
-                    a(href="#").blog__article-name Анимация набора текста на jQuery
-                    a(href="#").blog__article-name 3 самых известных редакторов кода HTML для новичка
-                    a(href="#").blog__article-name Почему WordPress лучше чем Joomla?
-                    a(href="#").blog__article-name Временная шкала на jQuery
+                    .blog__contents-wrapper
+                        a(href="#").blog__article-name.blog__article-name--active Лучшие фреймворки CSS в 2017 году
+                        a(href="#").blog__article-name Анимация набора текста на jQuery
+                        a(href="#").blog__article-name 3 самых известных редакторов кода HTML для новичка
+                        a(href="#").blog__article-name Почему WordPress лучше чем Joomla?
+                        a(href="#").blog__article-name Временная шкала на jQuery
                 section.blog__articles
                     ul.blog__articles-items
                         li.blog__article

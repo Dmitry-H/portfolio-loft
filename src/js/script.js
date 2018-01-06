@@ -165,8 +165,10 @@ const fullscreenMenu = (function() {
   };
 })();
 
-const swipeSidebar = (function() {
+const sidebar = (function() {
   const sidebar = document.getElementsByClassName("main-container__swipe-sidebar")[0];
+  const mainSidebar = document.getElementsByClassName("blog__contents-wrapper")[0];
+  const mainSidebarFirstPosition = mainSidebar.offsetTop;
   const contents = document.getElementsByClassName("swipe-sidebar__contents")[0];
   const appendix =document.getElementsByClassName("swipe-sidebar__appendix")[0];
   const content =document.getElementsByClassName("main-container__content-wrapper")[0];
@@ -174,72 +176,140 @@ const swipeSidebar = (function() {
   let contentsHeight;
   let sidebarWidth = sidebar.offsetWidth;
   let startCoordinate = null;
+  const headerHeight = document.getElementsByClassName("page-header")[0].offsetHeight;
+
+  const articles = document.getElementsByClassName("blog__article");
+  const articlesList = document.getElementsByClassName("blog__article-name");
+  const swipeArticlesList = document.getElementsByClassName("swipe-sidebar__article-name");
+  const articlesPosition = _getArticlesCoords();
+  let currentArticle = 0;
 
   function _init() {
     if (!sidebar) return;
     contentsHeight = contents.offsetHeight;
 
-    sidebar.addEventListener("touchstart", touchSwipeStart);
-    window.addEventListener("touchend", touchSwipeEnd);
-    sidebar.addEventListener("mousedown", mouseSwipeStart);
-    window.addEventListener("mouseup", MouseSwipeEnd);
-    window.addEventListener("scroll", verticalCenter.bind(null, appendix));
+    sidebar.addEventListener("touchstart", _touchSwipeStart);
+    window.addEventListener("touchend", _touchSwipeEnd);
+    sidebar.addEventListener("mousedown", _mouseSwipeStart);
+    window.addEventListener("mouseup", _MouseSwipeEnd);
+    window.addEventListener("scroll", _verticalCenter.bind(null, appendix));
+    window.addEventListener("scroll", _verticalCenter.bind(null, contents));
+    window.addEventListener("scroll", _sidebarCenter.bind(null, mainSidebar));
 
-    console.log();
-    verticalCenter.bind(null, appendix);
+    _verticalCenter.bind(null, appendix);
+    _verticalCenter.bind(null, contents);
+
+
+    window.addEventListener("scroll", _trackActiveArticle);
+    _initScroll(articlesList);
+    _initScroll(swipeArticlesList);
   }
 
-  function mouseSwipeStart(e) {
+  function _mouseSwipeStart(e) {
     e.preventDefault();
     startCoordinate = e.screenX;
   }
 
-  function MouseSwipeEnd(e) {
+  function _MouseSwipeEnd(e) {
     e.preventDefault();
     if (!startCoordinate) return;
     if (e.screenX > startCoordinate) {
-      openMenu();
+      _openMenu();
     }
     else if (e.screenX < startCoordinate) {
-      closeMenu();
+      _closeMenu();
     }
     startCoordinate = null;
   }
 
-  function touchSwipeStart(e) {
+  function _touchSwipeStart(e) {
     e.preventDefault();
     startCoordinate = e.changedTouches[0].pageX;
   }
 
-  function touchSwipeEnd(e) {
+  function _touchSwipeEnd(e) {
     e.preventDefault();
     if (!startCoordinate) return;
     if (e.changedTouches[0].pageX > startCoordinate) {
-      openMenu();
+      _openMenu();
     }
     else if (e.changedTouches[0].pageX < startCoordinate) {
-      closeMenu();
+      _closeMenu();
     }
     startCoordinate = null;
   }
 
-  function openMenu() {
+  function _openMenu() {
     sidebar.style.transform = `translateX(${sidebarWidth}px)`;
     content.style.transform = `translateX(${sidebarWidth}px)`;
   }
 
-  function closeMenu() {
+  function _closeMenu() {
     sidebar.style.transform = `translateX(0px)`;
     content.style.transform = `translateX(0px)`;
   }
 
-  function verticalCenter(element, e) {
+  function _verticalCenter(element, e) {
     let windowHeight = document.body.clientHeight;
     let elementHeight = element.offsetHeight;
     let posY = windowHeight / 2 - elementHeight / 2 + window.pageYOffset;
-    element.style.top = posY + "px";
+    element.style.transform = `translateY(${posY}px)`;
   }
-  
+
+  function _sidebarCenter(element, e) {
+    if (window.pageYOffset < mainSidebarFirstPosition) return;
+
+    let posY = window.pageYOffset - headerHeight;
+    element.style.transform = `translateY(${posY}px)`;
+  }
+
+  function _trackActiveArticle() {
+    let activeArticle = _getActiveArticle();
+    console.log(activeArticle);
+    _changeActiveArticle(activeArticle);
+  }
+
+  function _changeActiveArticle(index) {
+    articlesList[currentArticle].classList.remove("blog__article-name--active");
+    articlesList[index].classList.add("blog__article-name--active");
+    swipeArticlesList[currentArticle].classList.remove("swipe-sidebar__article-name--active");
+    swipeArticlesList[index].classList.add("swipe-sidebar__article-name--active");
+
+    currentArticle = index;
+  }
+
+  function _getActiveArticle() {
+    const windowScroll = window.pageYOffset;
+
+    for (let i = articlesPosition.length - 1; i >= 0; i--) {
+      if (windowScroll > articlesPosition[i]) {
+        return i;
+      }
+    }
+    return 0;
+  }
+
+  function _getArticlesCoords() {
+    let coords = [];
+    for (let i = 0; i < articles.length; i++) {
+      coords.push(articles[i].offsetTop);
+    }
+    return coords;
+  }
+
+  function _initScroll(list) {
+    for (let i = 0; i < list.length; i++) {
+      list[i].addEventListener("click", e => {
+        e.preventDefault();
+        articles[i].scrollIntoView();
+        setTimeout(() => {
+          _changeActiveArticle(i);
+        }, 100)
+
+      });
+    }
+  }
+
   return {
     init: _init
   };
@@ -250,5 +320,5 @@ fullscreenMenu.init();
 
 window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
-window.addEventListener('load', swipeSidebar.init);
+window.addEventListener('load', sidebar.init);
 
