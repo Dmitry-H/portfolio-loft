@@ -1,0 +1,35 @@
+.information {
+  padding: 47px 30px;
+  position: relative;
+  background: url(../img/header-bg.jpg) no-repeat;
+  background-size: cover;
+
+  &__wrapper {
+    position: relative;
+    z-index: 10;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(#fff, 0.85);
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 44px;
+    font-family: $robotomedium;
+    font-size: 21px;
+    color: #5d5a55;
+    font-weight: normal;
+  }
+
+  &__button {
+
+  }
+}

@@ -3,10 +3,10 @@ extends ../page-template
 
 block variables
     - var title = "Главная страница"
-//-block html
-//-    html.index-html(lang="ru")
-//-block body
-//-    body.index-body
+
+block styles
+    link(rel="stylesheet" href="./css/style.min.css")
+
 block content
     main.main-wrapper
         header.small-header.main-wrapper__header

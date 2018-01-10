@@ -31,7 +31,7 @@ function pages() {
 }
 
 function styles() {
-    return gulp.src("./src/sass/style.scss")
+    return gulp.src(["./src/sass/style.scss", "./src/sass/admin.scss"])
         .pipe(sourcemaps.init())
         .pipe(sass(/*{outputStyle: 'compressed'}*/).on("error", sass.logError))
         .pipe(sourcemaps.write())
@@ -52,6 +52,11 @@ function scripts() {
         .pipe(gulpWebpack(webpackConfig, webpack))
         .pipe(gulp.dest("./dist/js"))
 }
+
+/*function scripts() {
+    return gulp.src("./src/js/script.js")
+        .pipe(gulp.dest("./dist/js"))
+}*/
 
 function images() {
     return gulp.src(["./src/img/**/*.*", "!./src/img/sprites", "!./src/img/sprites/**/*.*"])

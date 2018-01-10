@@ -129,4 +129,28 @@ mixin fullscreen-menu(menuItems, currentPage)
                     else
                         a.fullscreen-menu__link.common-title.common-title--light.common-title--no-rounds(href=menuItems[i].page)= menuItems[i].name
 
+mixin tabs(tabs, active)
+    ul.tabs
+        - for (var i = 0; i < tabs.length; i++)
+            li.tabs__item
+                if i == active
+                    a.tabs__link.tabs__link--active(href= tabs[i].link)= tabs[i].name
+                else
+                    a.tabs__link(href= tabs[i].link)= tabs[i].name
 
+mixin skills-admin(skills)
+    ul.skills
+        each item in skills
+            li.skills__category
+                h3.skills__category-title= item[0]
+                ul.skills__items
+                    - for (var i = 1; i < item.length; i++)
+                        li.skills__item
+                            table.skills__table
+                                - for (var i = 1; i < item.length; i++)
+                                    tr.skills__row
+                                        td
+                                            label(for=item[i]).skills__name= item[i]
+                                        td
+                                            input.skills__input(type="number" min="0" max="100" id=item[i] name=item[i])
+                                        td.skills__percent %

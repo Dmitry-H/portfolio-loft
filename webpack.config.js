@@ -4,6 +4,11 @@ const config = {
     output: {
         filename: "script.js"
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            Vue: ["../../node_modules/vue/dist/vue.esm.js", "default"]
+        })
+    ]
 /*    module: {
         rules: [
             {
@@ -17,5 +22,8 @@ const config = {
         ]
     }*/
 };
+
+
+
 
 module.exports = config;

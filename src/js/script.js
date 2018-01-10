@@ -1,43 +1,3 @@
-/*
-function initMap() {
-  let zoom;
-
-  if (window.matchMedia('(max-width: 400px)').matches) {
-    zoom = 10;
-  }
-  else if (window.matchMedia('(max-width: 720px)').matches) {
-    zoom = 11;
-  }
-  else {
-    zoom = 12;
-  }
-
-  // let center = {lat: 59.928616, lng: 30.383887};
-  let center = {lat: 59.921981, lng: 30.410323};
-  let marks = [
-    {lat: 59.896228, lng: 30.424273},
-    {lat: 59.971850, lng: 30.309884},
-    {lat: 59.893108, lng: 30.316064},
-    {lat: 59.917250, lng: 30.494076},
-  ];
-  let markers = [];
-  let icon = 'img/map-marker.svg';
-  let map = new google.maps.Map(document.getElementById('map'), {
-    zoom: zoom,
-    center: center,
-    gestureHandling: 'none',
-  });
-
-  for (let i = 0; i < marks.length; i++) {
-    let marker= new google.maps.Marker({
-      position: marks[i],
-      map: map,
-      icon: icon,
-    });
-    markers.push(marker);
-  }
-}*/
-
 function initMap() {
   let center = {lat: 51.495800, lng: 45.940374};
   let home = {lat: 51.4960512, lng: 45.9432219};
@@ -57,33 +17,33 @@ function initMap() {
 window.initMap = initMap;
 
 const flip = (function() {
-  const logon = document.getElementById('logon');
-  const flipContainer = document.getElementsByClassName('main-wrapper__flip-container')[0];
-  const back = document.getElementById('back');
-  const flippedClass = 'main-wrapper__flip-container--fliped';
+    const logon = document.getElementById('logon');
+    const flipContainer = document.getElementsByClassName('main-wrapper__flip-container')[0];
+    const back = document.getElementById('back');
+    const flippedClass = 'main-wrapper__flip-container--fliped';
 
-  function _init () {
-    if (!logon || !back) return;
+    function _init () {
+        if (!logon || !back) return;
 
-    logon.addEventListener('click', _showLogon);
-    back.addEventListener('click', _hideLogon);
-  }
+        logon.addEventListener('click', _showLogon);
+        back.addEventListener('click', _hideLogon);
+    }
 
-  function _showLogon (e) {
-    e.preventDefault();
-    flipContainer.classList.add(flippedClass);
-    logon.style.opacity = 0;
-  }
+    function _showLogon (e) {
+        e.preventDefault();
+        flipContainer.classList.add(flippedClass);
+        logon.style.opacity = 0;
+    }
 
-  function _hideLogon(e) {
-    e.preventDefault();
-    flipContainer.classList.remove(flippedClass);
-    logon.style.opacity = 1;
-  }
+    function _hideLogon(e) {
+        e.preventDefault();
+        flipContainer.classList.remove(flippedClass);
+        logon.style.opacity = 1;
+    }
 
-  return {
-    init: _init
-  };
+    return {
+        init: _init
+    };
 })();
 
 const bgPosition = (function () {
@@ -168,15 +128,15 @@ const fullscreenMenu = (function() {
 const sidebar = (function() {
   const sidebar = document.getElementsByClassName("main-container__swipe-sidebar")[0];
   const mainSidebar = document.getElementsByClassName("blog__contents-wrapper")[0];
-  const mainSidebarFirstPosition = mainSidebar.offsetTop;
+  let mainSidebarFirstPosition;
   const contents = document.getElementsByClassName("swipe-sidebar__contents")[0];
   const appendix =document.getElementsByClassName("swipe-sidebar__appendix")[0];
   const content =document.getElementsByClassName("main-container__content-wrapper")[0];
 
   let contentsHeight;
-  let sidebarWidth = sidebar.offsetWidth;
+  let sidebarWidth;
   let startCoordinate = null;
-  const headerHeight = document.getElementsByClassName("page-header")[0].offsetHeight;
+  let headerHeight;
 
   const articles = document.getElementsByClassName("blog__article");
   const articlesList = document.getElementsByClassName("blog__article-name");
@@ -185,8 +145,13 @@ const sidebar = (function() {
   let currentArticle = 0;
 
   function _init() {
-    if (!sidebar) return;
+    if (!sidebar || !mainSidebar) return;
+
+    mainSidebarFirstPosition = mainSidebar.offsetTop;
+    sidebarWidth = sidebar.offsetWidth;
+    headerHeight = document.getElementsByClassName("page-header")[0].offsetHeight;
     contentsHeight = contents.offsetHeight;
+
 
     sidebar.addEventListener("touchstart", _touchSwipeStart);
     window.addEventListener("touchend", _touchSwipeEnd);
