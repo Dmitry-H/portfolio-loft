@@ -1,0 +1,14 @@
+extends ../admin-template
+
+block tabs
+    +tabs(tabs, 1)
+
+block info
+    h2.information__title Страница «Блог»
+    form().information__blog-form#blog-form
+        .blog
+            h3.small-title.blog__title Добавить запись
+            input.blog__input(type="text" placeholder="Название" id="name" name="name")
+            input.blog__input(type="text" placeholder="Дата" id="date" name="date")
+            textarea.blog__input.blog__input--textarea(placeholder="Содержание" id="content" name="content")
+            button.button(type="submit") Добавить

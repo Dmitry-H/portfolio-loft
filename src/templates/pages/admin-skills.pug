@@ -1,19 +1,10 @@
-extends ../page-template
+extends ../admin-template
 
-block variables
-    - var title = "Панель администратора"
-    - var currentPage = "admin-skills.html"
+block tabs
+    +tabs(tabs, 0)
 
-block styles
-    link(rel="stylesheet" href="./css/admin.min.css")
-
-block content
-    .main-container
-        include ../blocks/admin-header
-        +tabs(tabs, 0)
-        main.information.main-container__information
-            .information__wrapper
-                h2.information__title Страница «Обо мне»
-                form().information__skills-form#skills-form
-                    +skills-admin(skills)
-                    button.button(type="submit") Сохранить
+block info
+    h2.information__title Страница «Обо мне»
+    form().information__skills-form#skills-form
+        +skills-admin(skills)
+        button.button(type="submit") Сохранить
