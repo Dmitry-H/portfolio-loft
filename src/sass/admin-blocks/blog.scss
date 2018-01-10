@@ -12,10 +12,7 @@
     margin-bottom: 20px;
     padding: 14px 18px;
     width: 300px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
-    border-radius: 5px;
+    @include input-style;
 
     &--textarea {
       margin-bottom: 30px;
@@ -24,6 +21,4 @@
       resize: none;
     }
   }
-
-
 }

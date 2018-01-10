@@ -24,7 +24,7 @@
 }
 
 @mixin phone {
-  @media (max-width: 800px) { //720
+  @media (max-width: 720px) {
     @content;
   }
 }
@@ -62,4 +62,13 @@
     opacity: 1;
     visibility: visible;
   }
+}
+
+@mixin input-style {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: $robotoregular;
+  font-size: 16px;
 }

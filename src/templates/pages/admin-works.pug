@@ -1,0 +1,16 @@
+extends ../admin-template
+
+block tabs
+    +tabs(tabs, 2)
+
+block info
+    h2.information__title Страница «Мои работы»
+    form().information__works-form#works-form
+        .works
+            h3.small-title.works__title Добавить работу
+            input.works__input(placeholder="Название проекта" id="name" name="name")
+            input.works__input(placeholder="Технологии" id="technologies" name="technologies")
+            .works__file-upload
+                input.works__upload-input(type="file" id="image" name="image")
+                label.works__ubload-button(for="image") Загрузить картинку
+            button.button(type="submit") Добавить
