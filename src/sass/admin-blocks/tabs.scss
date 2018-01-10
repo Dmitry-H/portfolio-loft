@@ -21,4 +21,20 @@
       background-color: #fff;
     }
   }
+
+  @include tablet {
+
+    &__item {
+      flex: 1;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    &__link {
+      padding: 21px 0;
+      text-align: center;
+    }
+  }
 }

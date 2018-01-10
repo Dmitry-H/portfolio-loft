@@ -28,7 +28,6 @@
 
   &__items {
     @include list-style;
-
   }
 
   &__item {
@@ -45,7 +44,6 @@
   &__name {
     display: block;
     width: 150px;
-    //padding: 5px 5px;
     padding-left: 17px;
     font-family: $robotoregular;
     font-size: 16px;
@@ -74,5 +72,9 @@
 
   &__percent {
     padding: 0 10px;
+  }
+
+  @include tablet {
+    height: auto;
   }
 }

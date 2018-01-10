@@ -5,8 +5,8 @@
   align-items: center;
   font-family: $robotoregular;
   color: #fff;
-
   background-color: #e7a731;
+
   &__title {
     margin: 0;
     font-size: 28px;
@@ -21,5 +21,11 @@
     opacity: 0.7;
     text-decoration: none;
     border-bottom: 1px solid #fff;
+  }
+
+  @include tablet {
+    &__title {
+      font-size: 21px;
+    }
   }
 }
