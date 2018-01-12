@@ -5,10 +5,13 @@ block variables
     - var currentPage = "about.html"
 
 block header
+    include ../blocks/preloader-head
     link(rel="stylesheet" href="./css/style.min.css")
 
 block content
     main.main-container
+        .main-container__preloader.preloader
+            include ../blocks/preloader
         +page-header
         section.my-works
             .my-works__header

@@ -7,6 +7,11 @@ const config = {
     plugins: [
         new webpack.ProvidePlugin({
             Vue: ["../../node_modules/vue/dist/vue.esm.js", "default"]
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         })
     ]
 /*    module: {

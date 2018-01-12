@@ -5,10 +5,13 @@ block variables
     - var currentPage = "blog.html"
 
 block header
+    include ../blocks/preloader-head
     link(rel="stylesheet" href="./css/style.min.css")
 
 block content
     main.main-container.main-container--blog
+        .main-container__preloader.preloader
+            include ../blocks/preloader
         .main-container__swipe-sidebar.swipe-sidebar
             .swipe-sidebar__contents
                 a(href="#").swipe-sidebar__article-name.swipe-sidebar__article-name--active Лучшие фреймворки CSS в 2017 году
