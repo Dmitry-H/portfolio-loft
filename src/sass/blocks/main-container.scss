@@ -42,9 +42,6 @@
     transition: $decor-animation-delay;
   }
 
-/*  &--blog {
-  }*/
-
   @include phone {
 
     &__swipe-sidebar {
