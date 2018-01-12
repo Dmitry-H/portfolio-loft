@@ -9,7 +9,7 @@
     z-index: 10;
   }
 
-/*  &::before {
+  &::before {
     content: '';
     display: block;
     position: absolute;
@@ -18,7 +18,7 @@
     top: 0;
     bottom: 0;
     background-color: rgba(#fff, 0.85);
-  }*/
+  }
 
   &__title {
     margin: 0;
@@ -29,7 +29,7 @@
     font-weight: normal;
   }
 
-  &__button {
-
+  @include phone {
+    padding: 30px 10px;
   }
 }

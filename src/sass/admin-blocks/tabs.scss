@@ -37,4 +37,22 @@
       text-align: center;
     }
   }
+
+  @include phone {
+    flex-direction: column;
+
+    &__item {
+      width: 100%;
+      border-right: none;
+      border-bottom: 2px solid #fff;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    &__link {
+      font-size: 14px;
+    }
+  }
 }

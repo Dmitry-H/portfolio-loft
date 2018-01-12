@@ -77,4 +77,15 @@
   @include tablet {
     height: auto;
   }
+
+  @include phone {
+
+    &__category-title {
+      font-size: 14px;
+    }
+
+    &__name {
+      font-size: 14px;
+    }
+  }
 }

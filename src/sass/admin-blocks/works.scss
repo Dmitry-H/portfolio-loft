@@ -42,4 +42,15 @@
     cursor: pointer;
     background: url(../img/upload-icon.png) no-repeat left center;
   }
+
+  @include phone {
+    &__input {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    &__ubload-button {
+      font-size: 14px;
+    }
+  }
 }

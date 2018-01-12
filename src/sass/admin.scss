@@ -1,10 +1,11 @@
 @import "../../node_modules/node-normalize-scss/_normalize";
 
-@import "./global/tags";
+
 @import "./global/fonts";
 
 @import "./variables";
 @import "./mixins";
+@import "./global/tags";
 
 @import "./admin-blocks/main-container";
 @import "./admin-blocks/page-header";
@@ -15,3 +16,4 @@
 @import "./admin-blocks/blog";
 @import "./admin-blocks/small-title";
 @import "./admin-blocks/works";
+@import "./admin-blocks/message-window";

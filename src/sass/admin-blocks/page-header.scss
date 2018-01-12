@@ -28,4 +28,19 @@
       font-size: 21px;
     }
   }
+
+  @include phone {
+    flex-direction: column;
+    padding: 15px 15px;
+
+    &__title {
+      order: 2;
+      text-align: center;
+    }
+
+    &__return {
+      order: 1;
+      margin-bottom: 5px;
+    }
+  }
 }

@@ -1,10 +1,11 @@
 @import "../../node_modules/node-normalize-scss/_normalize";
 
-@import "./global/tags";
+
 @import "./global/fonts";
 
 @import "./variables";
 @import "./mixins";
+@import "./global/tags";
 
 @import "./blocks/logon-button";
 @import "./blocks/main-wrapper";

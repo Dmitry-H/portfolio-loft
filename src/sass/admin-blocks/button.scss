@@ -11,4 +11,8 @@
   &:hover {
     background-color: $button-color-hover;
   }
+
+  @include phone {
+    font-size: 14px;
+  }
 }
