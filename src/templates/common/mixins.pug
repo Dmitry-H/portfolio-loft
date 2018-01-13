@@ -154,3 +154,9 @@ mixin skills-admin(skills)
                                         td
                                             input.skills__input(type="number" min="0" max="100" id=item[i] name=item[i])
                                         td.skills__percent %
+
+mixin slides(slides)
+    - for (var i = 0; i < slides.length; i++)
+        li.works-slider__item
+            img.works-slider__image.works-slider__image--small(src= slides[i])
+

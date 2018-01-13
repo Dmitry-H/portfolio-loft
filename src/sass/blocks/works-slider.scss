@@ -36,7 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 65px 0 40px;
+    //padding: 65px 0 40px;
     grid-area: slide;
     background-color: #ebe5db;
 
@@ -45,9 +45,29 @@
     }
   }
 
+  &__item {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    //right: 0;
+    top: 0;
+    //bottom: 0;
+    width: 100%;
+    height: 100%;
+
+
+  }
+
   &__image {
     display: block;
-    max-width: 100%;
+    width: 100%;
+
+    &--small {
+      width: auto;
+      max-height: 100%;
+    }
   }
 
   &__navigation-slides {
@@ -57,11 +77,11 @@
   }
 
   &__navigation-slide {
-    display: flex;
-    align-items: center;
+    @include list-style;
     position: relative;
     cursor: pointer;
     flex: 1;
+    overflow: hidden;
 
     &::before {
       content: '';
@@ -71,6 +91,7 @@
       top: 0;
       bottom: 0;
       opacity: 0.7;
+      z-index: 10;
     }
 
     &--prev::before {
@@ -93,7 +114,7 @@
     width: 42.736px;
     height: 27.435px;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 20;
     fill: #fff;
     opacity: 0.7;
     transition: $decor-animation-delay;

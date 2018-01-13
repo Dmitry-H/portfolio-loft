@@ -293,6 +293,7 @@ const preloader = (function () {
 
     function _init() {
         if (!overlay) return;
+        overlay.classList.add("preloader--done"); //delete
 
         lastAnimate.addEventListener("animationend", _animationEnd);
         spinner.classList.add("prloader__image--animate");
@@ -334,6 +335,141 @@ const preloader = (function () {
     };
 })();
 
+const slider = (function() {
+    /*const slider = document.getElementsByClassName("works-slider")[0];
+    const next = document.getElementsByClassName("works-slider__navigation-slide--next")[0];
+    const prev = document.getElementsByClassName("works-slider__navigation-slide--prev")[0];
+    const prevSlides = prev.getElementsByClassName("works-slider__item");
+    const nextSlides = next.getElementsByClassName("works-slider__item");*/
+
+    const slider = $(".works-slider");
+    const next = $(".works-slider__navigation-slide--next");
+    const prev = $(".works-slider__navigation-slide--prev");
+    const prevSlides = prev.find(".works-slider__item");
+    const nextSlides = next.find(".works-slider__item");
+
+    const animationDuration = 300;
+    const activeClass = "works-slider__item--active";
+
+    let currentSlide = 0;
+    let slidesCount;
+    let stop = false;
+
+    function _init() {
+        if (!slider) return;
+        slidesCount = prevSlides.length;
+
+        next.on("click touchstart", _nextSlide);
+        prev.on("click touchstart", _prevSlide);
+
+        prevSlides.eq(_getPrevSlideNum(currentSlide)).addClass(activeClass);
+        nextSlides.eq(_getNextSlideNum(currentSlide)).addClass(activeClass);
+        prevSlides.eq(_getPrevSlideNum(currentSlide)).siblings(".works-slider__item").css("top", "100%");
+        nextSlides.eq(_getNextSlideNum(currentSlide)).siblings(".works-slider__item").css("top", "-100%");
+
+
+        // console.log(prev);
+    }
+
+    function _nextSlide(e) {
+        e.preventDefault();
+        if (!stop) {
+            stop = true;
+            _moveSlide("next", "next");
+            _moveSlide("prev", "next");
+            currentSlide = _getNextSlideNum(currentSlide);
+            _changeSlide();
+        }
+    }
+
+    function _prevSlide(e) {
+        e.preventDefault();
+        if (!stop) {
+            stop = true;
+            _moveSlide("next", "prev");
+            _moveSlide("prev", "prev");
+            currentSlide = _getPrevSlideNum(currentSlide);
+            _changeSlide();
+        }
+    }
+
+    function _changeSlide() {
+        const bigSlide = $(".works-slider__image--big");
+        const reqSlide = nextSlides.eq(currentSlide).find(".works-slider__image--small");
+        console.log(reqSlide);
+
+        const reqSrc = reqSlide.attr("src");
+        console.log(reqSrc);
+
+        bigSlide.animate({"opacity" : "0"}, animationDuration / 2, function () {
+            bigSlide.attr("src", reqSrc);
+            bigSlide.animate({"opacity" : "1"}, animationDuration / 2);
+        });
+
+
+
+    }
+
+    function _moveSlide(container, direction) {
+        let nextFunction;
+        let originPos;
+        let movePos;
+        let slides;
+
+        if (container === "next" && direction === "next") {
+            nextFunction = _getNextSlideNum;
+            originPos = "-100%";
+            movePos = "100%";
+            slides = nextSlides;
+        }
+        else if (container === "prev" && direction === "next") {
+            nextFunction = _getNextSlideNum;
+            originPos = "100%";
+            movePos = "-100%";
+            slides = prevSlides;
+        }
+        else if (container === "next" && direction === "prev") {
+            nextFunction = _getPrevSlideNum;
+            originPos = "-100%";
+            movePos = "100%";
+            slides = nextSlides;
+        }
+        else if (container === "prev" && direction === "prev") {
+            nextFunction = _getPrevSlideNum;
+            originPos = "100%";
+            movePos = "-100%";
+            slides = prevSlides;
+        }
+
+        const active = slides.filter("." + activeClass);
+        const currentSlideIndex = slides.index(active);
+        const reqItem = slides.eq(nextFunction(currentSlideIndex));
+
+        active.animate({"top": movePos}, animationDuration);
+        reqItem.animate({"top": "0"}, animationDuration, function () {
+
+            active.css("top", originPos);
+            stop = false;
+        });
+
+        active.removeClass(activeClass);
+        reqItem.addClass(activeClass);
+    }
+
+    function _getNextSlideNum(origin) {
+        return origin + 1 >= slidesCount ? 0 : origin + 1;
+    }
+
+    function _getPrevSlideNum(origin) {
+        return origin - 1 < 0 ? slidesCount - 1 : origin - 1;
+    }
+
+    return {
+        init: _init
+    };
+})();
+
+
 flip.init();
 fullscreenMenu.init();
 preloader.init();
@@ -341,4 +477,5 @@ preloader.init();
 window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
 window.addEventListener('load', sidebar.init);
+window.addEventListener('load', slider.init);
 
