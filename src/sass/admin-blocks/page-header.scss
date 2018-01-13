@@ -6,6 +6,7 @@
   font-family: $robotoregular;
   color: #fff;
   background-color: #e7a731;
+  flex-shrink: 0;
 
   &__title {
     margin: 0;

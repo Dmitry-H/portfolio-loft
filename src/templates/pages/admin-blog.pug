@@ -5,7 +5,7 @@ block tabs
 
 block info
     h2.information__title Страница «Блог»
-    form().information__blog-form#blog-form
+    form(method="post" action="/newblogpost").information__blog-form#blog-form
         .blog
             h3.small-title.blog__title Добавить запись
             input.blog__input(type="text" placeholder="Название" id="name" name="name")

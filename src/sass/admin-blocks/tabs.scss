@@ -2,6 +2,7 @@
   @include list-style;
   display: flex;
   background-color: #f0efe9;
+  flex-shrink: 0;
 
   &__item {
     border-right: 2px solid #fff;

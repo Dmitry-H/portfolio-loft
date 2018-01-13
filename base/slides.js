@@ -1,4 +1,14 @@
-const db = require("./low");
-const result = db.get("slides").value();
+const slides = (function () {
+    const db = require("./low");
 
-module.exports = result;
+    return {
+        get: function () {
+            return db.get("slides").value();
+        },
+        add: function (data) {
+            db.get("slides").push(data).write();
+        }
+    }
+})();
+
+module.exports = slides;

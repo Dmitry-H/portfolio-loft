@@ -5,6 +5,6 @@ block tabs
 
 block info
     h2.information__title Страница «Обо мне»
-    form().information__skills-form#skills-form
+    form(method="post" action="/updateskills").information__skills-form#skills-form
         +skills-admin(skills)
         button.button(type="submit") Сохранить

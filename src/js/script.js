@@ -525,7 +525,7 @@ const skillsRate = (function(){
 
 
     function _init() {
-        if (!skills) return;
+        if (!skills || !skillsBlock) return;
 
         skillsPosition = skillsBlock.offsetTop;
 
@@ -557,6 +557,219 @@ const skillsRate = (function(){
     };
 })();
 
+const adminForms = (function () {
+    const skillsForm = document.getElementById("skills-form");
+    const worksForm = document.getElementById("works-form");
+    const blogForm = document.getElementById("blog-form");
+    const messageWindow = document.getElementsByClassName("message-window")[0];
+    const closeButton = document.getElementsByClassName("message-window__close-button")[0];
+
+    function _init() {
+        if (skillsForm) {
+            skillsForm.addEventListener("submit", _processSkillsForm);
+        }
+        if (blogForm) {
+            blogForm.addEventListener("submit", _processBlogForm);
+        }
+        if (worksForm) {
+            worksForm.addEventListener("submit", _processWorksForm);
+        }
+
+
+        closeButton.addEventListener("click", _hideMessage);
+    }
+
+    function _processSkillsForm(e) {
+        e.preventDefault();
+        const fields = document.getElementsByClassName("skills__input");
+
+        if (!_emptyCheck(fields) || !_percentCheck(fields)) {
+            _showMessage("Все поля должны быть заполнены числами от 0 до 100, кратными 5");
+        }
+        else {
+            _sendForm(_getSkills(), skillsForm.action, skillsForm.method, null);
+        }
+    }
+    
+    function _processBlogForm(e) {
+        e.preventDefault();
+
+        const fields = document.getElementsByClassName("blog__input");
+
+        if (!_emptyCheck(fields)) {
+            _showMessage("Все поля должны быть заполнены");
+        }
+        else {
+            _sendForm(_getBlogPost(), blogForm.action, blogForm.method, fields);
+        }
+    }
+
+    function _processWorksForm(e) {
+        e.preventDefault();
+
+        const fields = document.getElementsByClassName("works__input");
+
+        if (!_emptyCheck(fields)) {
+            _showMessage("Все поля должны быть заполнены");
+        }
+        else {
+            _sendFile(fields);
+        }
+    }
+
+    function _sendForm(data, url, method, fields) {
+        let result;
+        console.log("send");
+        result = $.ajax({
+            url: url,
+            type: method,
+            data: data,
+            contentType: "application/json",
+            dataType: "json"
+        });
+
+        result.done(msg => {
+            if (msg["status"] === "ok") {
+                _showMessage("Данные были успешно отправлены");
+                if (fields) {
+                    _cleanFields(fields);
+                }
+            }
+            else {
+                _showMessage("Произошла ошибка");
+            }
+        });
+
+        result.fail(msg => {
+            _showMessage("Произошла ошибка");
+        });
+    }
+
+    function _sendFile(fields) {
+        const fileField = document.getElementById("image");
+        const nameField = document.getElementById("name");
+        const technologiesField = document.getElementById("technologies");
+        const linkField = document.getElementById("link");
+        const file = fileField.files[0];
+        let result;
+
+        let data = new FormData();
+        data.append("uploadFile", file);
+        data.append("name", nameField.value);
+        data.append("technologies", technologiesField.value);
+        data.append("link", linkField.value);
+
+        result = $.ajax({
+            url: "loadimg",
+            data: data,
+            contentType: false,
+            processData: false,
+            type: "post"
+        });
+
+        result.done(msg => {
+            if (msg["status"] === "ok") {
+                _showMessage("Данные были успешно отправлены");
+                _cleanFields(fields);
+                /*fileField.value = "";
+                nameField.value = "";
+                technologiesField.value = "";
+                linkField.value = "";*/
+            }
+            else {
+                _showMessage("Произошла ошибка");
+            }
+        });
+
+        result.fail(msg => {
+            console.log("ne ok");
+        });
+    }
+
+    function _cleanFields(fields) {
+        for (let i = 0; i < fields.length; i++) {
+            fields[i].value = "";
+        }
+    }
+
+    function _getSkills() {
+        const categories = document.getElementsByClassName("skills__category");
+        let result = [];
+
+        for (let i = 0; i < categories.length; i++) {
+            const categoryName = categories[i].getElementsByClassName("skills__category-title")[0].innerHTML;
+            const itemsValue = categories[i].getElementsByClassName("skills__input");
+            const itemsNames = categories[i].getElementsByClassName("skills__name");
+            result.push({});
+            result[i].categoryName = categoryName;
+            result[i].skillItems = [];
+
+            for (let j = 0; j < itemsValue.length; j++) {
+                result[i].skillItems.push({
+                    name: itemsNames[j].innerHTML,
+                    percent: itemsValue[j].value
+                });
+            }
+        }
+
+        return JSON.stringify(result);
+    }
+
+    function _getBlogPost() {
+        let result = {};
+
+        const name = document.getElementById("name").value;
+        const date = document.getElementById("date").value;
+        let post = document.getElementById("content").value;
+
+
+        post = post.replace(/[\s{2,}]+/g, '');
+        post = post.replace(/"/g,"'");
+
+        result.name = name;
+        result.date = date;
+        result.post = post;
+
+        return JSON.stringify(result);
+    }
+
+    function _emptyCheck(data) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].value === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function _percentCheck(data) {
+        for (let i = 0; i < data.length; i++) {
+            let tmp = parseInt(data[i].value);
+            if ((tmp % 5 !== 0) || tmp < 0 || tmp > 100) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function _showMessage(message) {
+
+        const messageField = document.getElementsByClassName("message-window__message")[0];
+
+        messageField.innerHTML = message;
+        messageWindow.classList.add("message-window--visible");
+    }
+
+    function _hideMessage(e) {
+        e.preventDefault();
+        messageWindow.classList.remove("message-window--visible");
+    }
+
+    return {
+        init: _init
+    };
+})();
+
 
 flip.init();
 fullscreenMenu.init();
@@ -566,7 +779,6 @@ window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
 window.addEventListener('load', sidebar.init);
 window.addEventListener('load', slider.init);
-window.addEventListener('load', function () {
-    setTimeout(skillsRate.init, 1000)
-});
+window.addEventListener('load', skillsRate.init);
+window.addEventListener('load', adminForms.init);
 

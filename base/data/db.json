@@ -51,6 +51,16 @@
       "name": "Временная шкала на jQuery",
       "date": "5 июня 2017",
       "post": "<p>jQuery плагин для создания временной шкалы.</p><h4>1.1. Установка через пакетного менеджера</h4><p>Timeline.js можно установить через <a href='https://bower.io/' target='_blank'>Bower</a> и <a href='https://www.npmjs.com/package/timelinejs-slider' target='_blank'>NPM</a>.</p><p>bower install timelinejs-slider</p><p>npm install timelinejs-slider</p><h4>1.2. Основы работы</h4><p>Подключаем jQuery:</p><code><pre class='html5' style='font-family:monospace;'><ol><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>script</span> <span style='color: #000066;'>src</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;js/jquery.min.js&quot;</span>&gt;&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>script</span>&gt;</span> <span style='color: #808080; font-style: italic;'>&lt;!-- &gt;=1.11.2 --&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>script</span> <span style='color: #000066;'>src</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;js/timeline.min.js&quot;</span>&gt;&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>script</span>&gt;</span></div></li></ol></pre></code><p>Подключаем css файл:</p><code><pre class='html5' style='font-family:monospace;'><ol><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>link</span> <span style='color: #000066;'>rel</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;stylesheet&quot;</span> <span style='color: #000066;'>href</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;css/timeline.css&quot;</span>&gt;</span></div></li></ol></pre></code><p>Html:</p><code><pre class='html5' style='font-family:monospace;'><ol><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> <span style='color: #000066;'>class</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;timeline-container timeline-theme-1&quot;</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> <span style='color: #000066;'>class</span><span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;timeline js-timeline&quot;</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>    <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> data-time<span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;2017&quot;</span>&gt;</span>your content or markup<span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>    <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> data-time<span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;2016&quot;</span>&gt;</span>your content or markup<span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>    <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> data-time<span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;2015&quot;</span>&gt;</span>your content or markup<span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>    <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> data-time<span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;2014&quot;</span>&gt;</span>your content or markup<span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>    <span style='color: #009900;'>&lt;<span style='color: #000000; font-weight: bold;'>div</span> data-time<span style='color: #66cc66;'>=</span><span style='color: #ff0000;'>&quot;2013&quot;</span>&gt;</span>your content or markup<span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&lt;<span style='color: #66cc66;'>/</span><span style='color: #000000; font-weight: bold;'>div</span>&gt;</span><span style='color: #808080; font-style: italic;'>&lt;!-- /.timeline-container --&gt;</span></div></li></ol></pre></code><p>Запуск плагина:</p><code><pre class='jquery' style='font-family:monospace;'><ol><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #000066;'>$</span><span style='color: #009900;'>&#40;</span><span style='color: #003366; font-weight: bold;'>function</span><span style='color: #009900;'>&#40;</span><span style='color: #009900;'>&#41;</span><span style='color: #009900;'>&#123;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #000066;'>$</span><span style='color: #009900;'>&#40;</span><span style='color: #3366CC;'>'.js-timeline'</span><span style='color: #009900;'>&#41;</span>.<span style='color: #660066;'>Timeline</span><span style='color: #009900;'>&#40;</span><span style='color: #009900;'>&#41;</span><span style='color: #339933;'>;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&#125;</span><span style='color: #009900;'>&#41;</span><span style='color: #339933;'>;</span></div></li></ol></pre></code><h4>Параметры</h4><code><pre class='jquery' style='font-family:monospace;'><ol><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #000066;'>$</span><span style='color: #009900;'>&#40;</span><span style='color: #3366CC;'>'.timeline'</span><span style='color: #009900;'>&#41;</span>.<span style='color: #660066;'>Timeline</span><span style='color: #009900;'>&#40;</span><span style='color: #009900;'>&#123;</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  autoplay<span style='color: #339933;'>:</span> <span style='color: #003366; font-weight: bold;'>false</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: boolean | Автопроигрывание</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  autoplaySpeed<span style='color: #339933;'>:</span> <span style='color: #CC0000;'>3000</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: integer | Скорость</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  mode<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'horizontal'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: horizontal | vertical, по умолчанию horizontal</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  itemClass<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'timeline-item'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: класс</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  dotsClass<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'timeline-dots'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: класс точки</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  activeClass<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'slide-active'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: класс для точки oitem</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  prevClass<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'slide-prev'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: класс предыдущей точки</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  nextClass<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'slide-next'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: класс следующей точки</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  startItem<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'first'</span><span style='color: #339933;'>,</span> <span style='color: #006600; font-style: italic;'>// first|last|number</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: first | last | number , по умолчанию first</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  dotsPosition<span style='color: #339933;'>:</span> <span style='color: #3366CC;'>'bottom'</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: bottom | top, default to bottom</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  pauseOnHover<span style='color: #339933;'>:</span> <span style='color: #003366; font-weight: bold;'>true</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: boolean | Пауза при наведении мыши</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  pauseOnDotsHover<span style='color: #339933;'>:</span> <span style='color: #003366; font-weight: bold;'>false</span><span style='color: #339933;'>,</span></div></li><li style='font-weight: bold; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'>  <span style='color: #006600; font-style: italic;'>// value: boolean | Пауза при наведении мыши на точку</span></div></li><li style='font-weight: normal; vertical-align:top;'><div style='font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;'><span style='color: #009900;'>&#125;</span><span style='color: #009900;'>&#41;</span><span style='color: #339933;'>;</span></div></li></ol></pre></code>"
+    },
+    {
+      "name": "dddd",
+      "date": "fffff",
+      "post": "fffffffffffff"
+    },
+    {
+      "name": "ffffffff",
+      "date": "ddddddddddd",
+      "post": "vvvvvvvvvvvvvvvvv"
     }
   ],
   "skills": [
@@ -66,7 +76,7 @@
           "percent": "70"
         },
         {
-          "name": "JavaScript & jQuery",
+          "name": "JavaScript &amp; jQuery",
           "percent": "40"
         }
       ]
@@ -83,12 +93,69 @@
           "percent": "10"
         },
         {
-          "name": "Node.js & npm",
+          "name": "Node.js &amp; npm",
           "percent": "40"
         },
         {
           "name": "Mongo.db",
+          "percent": "100"
+        }
+      ]
+    },
+    {
+      "categoryName": "WorkFlow",
+      "skillItems": [
+        {
+          "name": "Git",
+          "percent": "50"
+        },
+        {
+          "name": "Gulp",
+          "percent": "60"
+        },
+        {
+          "name": "Bower",
           "percent": "5"
+        }
+      ]
+    }
+  ],
+  "object Object": [
+    {
+      "categoryName": "Frontend",
+      "skillItems": [
+        {
+          "name": "HTML5",
+          "percent": "80"
+        },
+        {
+          "name": "CSS3",
+          "percent": "70"
+        },
+        {
+          "name": "JavaScript &amp; jQuery",
+          "percent": "40"
+        }
+      ]
+    },
+    {
+      "categoryName": "Backend",
+      "skillItems": [
+        {
+          "name": "PHP",
+          "percent": "10"
+        },
+        {
+          "name": "mySQL",
+          "percent": "10"
+        },
+        {
+          "name": "Node.js &amp; npm",
+          "percent": "40"
+        },
+        {
+          "name": "Mongo.db",
+          "percent": "100"
         }
       ]
     },
