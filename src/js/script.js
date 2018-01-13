@@ -517,6 +517,46 @@ const slider = (function() {
     };
 })();
 
+const skillsRate = (function(){
+    const skills = document.getElementsByClassName("skills__item");
+    const skillsBlock = document.getElementsByClassName("skills")[0];
+
+    let skillsPosition;
+
+
+    function _init() {
+        if (!skills) return;
+
+        skillsPosition = skillsBlock.offsetTop;
+
+        window.addEventListener("scroll", _checkPosition)
+    }
+
+    function _checkPosition() {
+        const windowScroll = window.pageYOffset;
+
+        if (windowScroll >= skillsPosition) {
+            _showSkills()
+        }
+    }
+
+    function _showSkills() {
+        for (let i = 0; i < skills.length; i++) {
+            const rate = skills[i].getAttribute("data-percent");
+            const newClassName = "circle-" + rate;
+            const skillLevel = skills[i].getElementsByClassName("skills__image-level")[0];
+
+            skillLevel.classList.remove("circle-0");
+            skillLevel.classList.add(newClassName);
+            skillLevel.style.opacity = rate / 100;
+        }
+    }
+
+    return {
+        init: _init
+    };
+})();
+
 
 flip.init();
 fullscreenMenu.init();
@@ -526,4 +566,7 @@ window.addEventListener('load', bgPosition.init);
 window.addEventListener('load', bgAnimation.init);
 window.addEventListener('load', sidebar.init);
 window.addEventListener('load', slider.init);
+window.addEventListener('load', function () {
+    setTimeout(skillsRate.init, 1000)
+});
 
