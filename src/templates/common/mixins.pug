@@ -80,17 +80,18 @@ mixin contacts(items, addClass)
             li(class = `contacts__item contacts__item--${itemName}`)= item
 
 mixin skills(skills)
+    - var category
     ul.skills
-        each item in skills
+        each category in skills
             li.skills__category
-                h3.skills__category-title= item[0]
+                h3.skills__category-title= category.categoryName
                 ul.skills__items
-                    - for (var i = 1; i < item.length; i++)
-                        li.skills__item
+                    each item in category.skillItems
+                        li.skills__item(data-percent= item.percent)
                             svg.skills__image(viewBox="0 0 110 110")
                                 circle.skills__image-bg(r="45" cx="50%" cy="50%" fill="none")
                                 circle.skills__image-level(r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)")
-                            span.skills__label= item[i]
+                            span.skills__label= item.name
 
 mixin footer(modifier)
     - var classNames = "page-footer";
@@ -140,20 +141,17 @@ mixin tabs(tabs, active)
 
 mixin skills-admin(skills)
     ul.skills
-        each item in skills
+        each category in skills
             li.skills__category
-                h3.skills__category-title= item[0]
-                ul.skills__items
-                    - for (var i = 1; i < item.length; i++)
-                        li.skills__item
-                            table.skills__table
-                                - for (var i = 1; i < item.length; i++)
-                                    tr.skills__row
-                                        td
-                                            label(for=item[i]).skills__name= item[i]
-                                        td
-                                            input.skills__input(type="number" min="0" max="100" id=item[i] name=item[i])
-                                        td.skills__percent %
+                h3.skills__category-title= category.categoryName
+                table.skills__items
+                    each item in category.skillItems
+                        tr.skills__row
+                            td
+                                label(for=item.name).skills__name= item.name
+                            td
+                                input.skills__input(type="number" min="0" max="100" id=item.name name=item.name value= item.percent)
+                            td.skills__percent %
 
 mixin slides(slides)
     - for (var i = 0; i < slides.length; i++)

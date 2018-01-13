@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const slides = require("../base/slides");
 const blogposts = require("../base/blogposts");
+const skills = require("../base/skills");
 
 router.get("/", function(req, res) {
     res.render("index");
 });
 
 router.get("/about", function(req, res) {
-    res.render("about");
+    res.render("about", {skills: skills});
 });
 
 router.get("/blog", function(req, res) {
@@ -20,7 +21,7 @@ router.get("/my-works", function(req, res) {
 });
 
 router.get("/admin", function(req, res) {
-    res.render("admin-skills");
+    res.render("admin-skills", {skills: skills});
 });
 
 router.get("/admin-blog", function(req, res) {
@@ -31,5 +32,5 @@ router.get("/admin-works", function(req, res) {
     res.render("admin-works");
 });
 
-// console.log(blogposts);
+console.log(skills);
 module.exports = router;
