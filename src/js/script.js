@@ -293,7 +293,7 @@ const preloader = (function () {
 
     function _init() {
         if (!overlay) return;
-        overlay.classList.add("preloader--done"); //delete
+        // overlay.classList.add("preloader--done");
 
         lastAnimate.addEventListener("animationend", _animationEnd);
         spinner.classList.add("prloader__image--animate");
@@ -336,12 +336,6 @@ const preloader = (function () {
 })();
 
 const slider = (function() {
-    /*const slider = document.getElementsByClassName("works-slider")[0];
-    const next = document.getElementsByClassName("works-slider__navigation-slide--next")[0];
-    const prev = document.getElementsByClassName("works-slider__navigation-slide--prev")[0];
-    const prevSlides = prev.getElementsByClassName("works-slider__item");
-    const nextSlides = next.getElementsByClassName("works-slider__item");*/
-
     const slider = $(".works-slider");
     const next = $(".works-slider__navigation-slide--next");
     const prev = $(".works-slider__navigation-slide--prev");
@@ -366,9 +360,6 @@ const slider = (function() {
         nextSlides.eq(_getNextSlideNum(currentSlide)).addClass(activeClass);
         prevSlides.eq(_getPrevSlideNum(currentSlide)).siblings(".works-slider__item").css("top", "100%");
         nextSlides.eq(_getNextSlideNum(currentSlide)).siblings(".works-slider__item").css("top", "-100%");
-
-
-        // console.log(prev);
     }
 
     function _nextSlide(e) {
@@ -395,19 +386,76 @@ const slider = (function() {
 
     function _changeSlide() {
         const bigSlide = $(".works-slider__image--big");
-        const reqSlide = nextSlides.eq(currentSlide).find(".works-slider__image--small");
-        console.log(reqSlide);
+        const reqSlide = nextSlides.eq(currentSlide);
+        const link = $(".site-link");
 
-        const reqSrc = reqSlide.attr("src");
-        console.log(reqSrc);
+        const newName = reqSlide.data("name");
+        const newTeck = reqSlide.data("teck");
+        const newLink = reqSlide.data("link");
+        const newSrc = reqSlide.find(".works-slider__image--small").attr("src");
+
+        const nameField = document.querySelector("#project-name");
+        const techField =  document.querySelector(".works-slider__technologies");
+
+        console.log();
+
+        link.attr("href", newLink);
 
         bigSlide.animate({"opacity" : "0"}, animationDuration / 2, function () {
-            bigSlide.attr("src", reqSrc);
+            bigSlide.attr("src", newSrc);
             bigSlide.animate({"opacity" : "1"}, animationDuration / 2);
         });
 
+        _wordAnimation(nameField, newName);
+        _wordAnimation(techField, newTeck);
+    }
 
+    function _wordAnimation(container, text) {
+        let string = text.trim();
+        let stringArray = string.split('');
+        let word = '';
+        let animationState = $.Deferred();
+        let Slider = this;
 
+        Array.from(stringArray).map((letter) => {
+            let letterHtml = '';
+
+            if(letter != ' ') {
+                letterHtml = '<span class="works-slider__letter">' + letter + '</span>';
+            } else {
+                letterHtml = '<span class="works-slider__letter--space">' + letter + '</span>';
+            }
+
+            word += letterHtml;
+        });
+
+        container.innerHTML = word;
+
+        let letter = container.querySelectorAll('.works-slider__letter'),
+            count = 0,
+            timer,
+            duration = 600 / stringArray.length;
+
+        function showLetters () {
+            let currentLetter = $(letter).eq(count);
+
+            currentLetter.addClass('works-slider__letter--show');
+
+            if (count == stringArray.length) {
+                animationState.resolve();
+                clearTimeout(timer);
+                count = 0;
+            } else {
+                count++;
+                timer = setTimeout(showLetters, duration);
+            }
+        }
+
+        showLetters();
+
+        animationState.done(function() {
+            Slider.process = false;
+        });
     }
 
     function _moveSlide(container, direction) {

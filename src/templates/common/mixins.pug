@@ -157,6 +157,6 @@ mixin skills-admin(skills)
 
 mixin slides(slides)
     - for (var i = 0; i < slides.length; i++)
-        li.works-slider__item
-            img.works-slider__image.works-slider__image--small(src= slides[i])
+        li.works-slider__item(data-name= slides[i].name data-teck= slides[i].teck data-link= slides[i].link)
+            img.works-slider__image.works-slider__image--small(src= slides[i].img)
 
