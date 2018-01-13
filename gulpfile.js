@@ -127,7 +127,7 @@ gulp.task("build", gulp.series(
 
 gulp.task("default", gulp.series(
     clear,
-    gulp.parallel(pages, styles, fonts, images, sprites, scripts),
+    gulp.parallel(/*pages, */styles, fonts, images, sprites, scripts),
     gulp.parallel(watch, server)
 ));
 
