@@ -39,14 +39,15 @@ block content
             ul.about-me__feedbacks
                 +feedbacks(instructors)
             .about-me__contact
-                form#mail-form
+                form#mail-form(method="post" action="/mail")
                     .mail-form
                         .mail-form__header
                             h3.common-title.common-title--small Связаться со мной
                         .mail-form__fields
-                            input.mail-form__input-field(type="text" placeholder="Имя")
-                            input.mail-form__input-field(type="email" placeholder="Email")
-                            textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение")
+                            input.mail-form__input-field(type="text" placeholder="Имя" name="name")
+                            input.mail-form__input-field(type="email" placeholder="Email" name="email")
+                            textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение" name="message")
+                            .mail-form__info
                         .mail-form__controls
                             button(type="submit").button.mail-form__button Отправить
                             button(type="clear").button.mail-form__button Очистить

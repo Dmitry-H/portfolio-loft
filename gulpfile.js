@@ -122,7 +122,7 @@ function watch() {
 
 gulp.task("build", gulp.series(
     clear,
-    gulp.parallel(pages, styles, fonts, images, sprites, scripts)
+    gulp.parallel(/*pages, */styles, fonts, images, sprites, scripts)
 ));
 
 gulp.task("default", gulp.series(
@@ -131,7 +131,7 @@ gulp.task("default", gulp.series(
     gulp.parallel(watch, server)
 ));
 
-exports.pages = pages;
+// exports.pages = pages;
 exports.styles = styles;
 exports.images = images;
 exports.fonts = fonts;

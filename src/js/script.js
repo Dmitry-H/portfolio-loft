@@ -568,13 +568,15 @@ const adminForms = (function () {
         if (skillsForm) {
             skillsForm.addEventListener("submit", _processSkillsForm);
         }
-        if (blogForm) {
+        else if (blogForm) {
             blogForm.addEventListener("submit", _processBlogForm);
         }
-        if (worksForm) {
+        else if (worksForm) {
             worksForm.addEventListener("submit", _processWorksForm);
         }
-
+        else {
+            return;
+        }
 
         closeButton.addEventListener("click", _hideMessage);
     }
@@ -671,10 +673,6 @@ const adminForms = (function () {
             if (msg["status"] === "ok") {
                 _showMessage("Данные были успешно отправлены");
                 _cleanFields(fields);
-                /*fileField.value = "";
-                nameField.value = "";
-                technologiesField.value = "";
-                linkField.value = "";*/
             }
             else {
                 _showMessage("Произошла ошибка");
@@ -770,6 +768,70 @@ const adminForms = (function () {
     };
 })();
 
+const sendMail = (function () {
+    const form = document.getElementById("mail-form");
+    const fields = document.getElementsByClassName("mail-form__input-field");
+    const info = document.getElementsByClassName("mail-form__info")[0];
+
+    let data = {};
+
+    function _init() {
+        if (!form) return;
+
+        form.addEventListener("submit", _send);
+
+    }
+
+    function _send(e) {
+        e.preventDefault();
+        let result;
+
+        if (!_checkFields()) {
+            info.innerHTML = "Необходимо заполнить все поля";
+        }
+        else {
+            for (let i = 0; i < fields.length; i++) {
+                data[fields[i].name] = fields[i].value;
+            }
+            console.log(`${form.url} ${form.method} ${JSON.stringify(data)}`);
+            result = $.ajax({
+                url: form.action,
+                type: form.method,
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                dataType: "json"
+            });
+
+            result.done(msg => {
+                if (msg["status"] === "ok") {
+                    info.innerHTML = "Данные были успешно отправлены";
+                    // form.reset();
+                }
+                else {
+                    info.innerHTML = "Произошла ошибка";
+                }
+            });
+
+            result.fail(msg => {
+                info.innerHTML = "Произошла ошибка";
+            });
+        }
+    }
+
+    function _checkFields() {
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].value === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return {
+        init: _init
+    }
+})();
+
 
 flip.init();
 fullscreenMenu.init();
@@ -781,4 +843,5 @@ window.addEventListener('load', sidebar.init);
 window.addEventListener('load', slider.init);
 window.addEventListener('load', skillsRate.init);
 window.addEventListener('load', adminForms.init);
+window.addEventListener('load', sendMail.init);
 

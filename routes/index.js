@@ -10,6 +10,8 @@ const jsonParser = bodyParser.json();
 const fs = require("fs");
 const multiparty = require('multiparty');
 
+const nodemailer = require('nodemailer');
+
 router.get("/", function(req, res) {
     res.render("index");
 });
@@ -54,6 +56,14 @@ router.post("/newblogpost", jsonParser, function (request, response) {
     response.json({status: "ok"});
 });
 
+router.post("/mail", jsonParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+    console.log(request.body);
+    // console.log(request);
+    // response.json(`${request.body.userName} - ${request.body.userAge}`);
+
+    response.json({status: "ok"});
+});
 
 router.post("/loadimg", function(req, res, next) {
     // создаем форму
