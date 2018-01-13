@@ -160,3 +160,17 @@ mixin slides(slides)
         li.works-slider__item(data-name= slides[i].name data-teck= slides[i].teck data-link= slides[i].link)
             img.works-slider__image.works-slider__image--small(src= slides[i].img)
 
+mixin blogContents(blogposts, className, activeClass)
+    - var len = blogposts.length;
+    - var active = className + " " + activeClass
+    a(href="#" class= active)= blogposts[0].name
+    - for (var i = 1; i < len; i++)
+        a(href="#" class= className)= blogposts[i].name
+
+mixin blog(blogposts)
+    ul.blog__articles-items
+        - for (var i = 0; i < blogposts.length; i++)
+            li.blog__article
+                h3.blog__title= blogposts[i].name
+                span.blog__date= blogposts[i].date
+                .blog__article-content!= blogposts[i].post

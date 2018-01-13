@@ -36,6 +36,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "jquery": "^3.2.1",
+    "lowdb": "^1.0.0",
     "node-normalize-scss": "^3.0.0",
     "vue": "^2.5.13"
   }
