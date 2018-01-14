@@ -11,7 +11,7 @@ const jsonParser = bodyParser.json();
 const fs = require("fs");
 const multiparty = require('multiparty');
 
-
+const mailer = require("../mail/mail");
 
 const nodemailer = require('nodemailer');
 
@@ -87,7 +87,14 @@ router.post("/newblogpost", jsonParser, function (request, response) {
 router.post("/mail", jsonParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
     console.log(request.body);
+    const title = "Уведомление с сайта портфолио";
+    const message = `Имя отправителя: ${request.body.name}<br>
+    Адрес отправителя: ${request.body.email}<br>
+    Сообщение:<br>
+    ${request.body.message}`;
 
+
+    mailer.sendMail(title, message);
     response.json({status: "ok"});
 });
 
@@ -128,39 +135,6 @@ router.post("/loadimg", function(req, res, next) {
         }
     });
 
-    // при поступлении файла
-    /*form.on('part', function(part) {
-        console.log(part);
-
-        //читаем его размер в байтах
-        uploadFile.size = part.byteCount;
-        //читаем его тип
-        uploadFile.type = part.headers['content-type'];
-        //путь для сохранения файла
-        uploadFile.path = './dist/img/userpics/' + part.filename;
-
-        //проверяем размер файла, он не должен быть больше максимального размера
-        if(uploadFile.size > maxSize) {
-            errors.push('File size is ' + uploadFile.size + '. Limit is' + (maxSize / 1024 / 1024) + 'MB.');
-        }
-
-        //проверяем является ли тип поддерживаемым
-        if(supportMimeTypes.indexOf(uploadFile.type) == -1) {
-            errors.push('Unsupported mimetype ' + uploadFile.type);
-        }
-
-        //если нет ошибок то создаем поток для записи файла
-        if(errors.length == 0) {
-            var out = fs.createWriteStream(uploadFile.path);
-            part.pipe(out);
-        }
-        else {
-            //пропускаем
-            //вообще здесь нужно как-то остановить загрузку и перейти к onclose
-            part.resume();
-        }
-    });*/
-
     // парсим форму
     // form.parse(req);
     form.parse(req, function(err, fields, files) {
@@ -182,6 +156,4 @@ router.post("/loadimg", function(req, res, next) {
 
 });
 
-
-// console.log(skills);
 module.exports = router;
