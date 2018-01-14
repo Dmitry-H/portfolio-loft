@@ -148,7 +148,7 @@ mixin skills-admin(skills)
                     each item in category.skillItems
                         tr.skills__row
                             td
-                                label(for=item.name).skills__name= item.name
+                                label(for=item.name).skills__name!= item.name
                             td
                                 input.skills__input(type="number" min="0" max="100" id=item.name name=item.name value= item.percent)
                             td.skills__percent %

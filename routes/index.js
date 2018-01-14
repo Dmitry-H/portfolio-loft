@@ -16,7 +16,6 @@ const mailer = require("../mail/mail");
 const nodemailer = require('nodemailer');
 
 router.get("/", function(req, res) {
-    console.log(req.session);
     res.render("index");
 });
 

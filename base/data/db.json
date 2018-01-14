@@ -88,7 +88,7 @@
         },
         {
           "name": "Mongo.db",
-          "percent": "100"
+          "percent": "10"
         }
       ]
     },

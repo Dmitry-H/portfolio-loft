@@ -704,7 +704,7 @@ const adminForms = (function () {
 
             for (let j = 0; j < itemsValue.length; j++) {
                 result[i].skillItems.push({
-                    name: itemsNames[j].innerHTML,
+                    name: itemsValue[j].name,
                     percent: itemsValue[j].value
                 });
             }
