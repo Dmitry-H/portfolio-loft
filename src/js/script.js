@@ -832,6 +832,96 @@ const sendMail = (function () {
     }
 })();
 
+const auth = (function() {
+    const form = document.querySelector('#logon-form');
+
+    function _init() {
+        if (!form) return;
+        const closeMessage = document.getElementsByClassName("message-window__close")[0];
+        closeMessage.addEventListener("click", _hideMessage);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!_checkEmpty()) {
+                _showMessage("Все поля должны быть заполнены");
+                return;
+            }
+            if (!_checkRobot()) {
+                _showMessage("Роботам вход запрещён");
+                return;
+            }
+
+            let data = {
+                username : form.username.value,
+                password : form.password.value
+            };
+            sendData('/logon', data);
+        });
+    }
+
+    function _showMessage(message) {
+        const msgWindow = document.getElementsByClassName("message-window")[0];
+        const messageField = document.getElementsByClassName("message-window__message")[0];
+
+        messageField.innerHTML = message;
+        msgWindow.classList.add("message-window--visible");
+    }
+
+    function _hideMessage(e) {
+        e.preventDefault();
+        const msgWindow = document.getElementsByClassName("message-window")[0];
+        msgWindow.classList.remove("message-window--visible");
+    }
+
+    function sendData(url, data) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(data));
+
+        xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+
+            if (xhr.status != 200) {
+                console.warn( xhr.status + ': ' + xhr.statusText );
+            }
+            const result = JSON.parse(xhr.responseText);
+
+            switch(result.status) {
+                case "ok":
+                    window.location.replace("/admin");
+                    break;
+                case "wrong password":
+                    _showMessage("Неверные авторизационные данные");
+                    break;
+                default:
+                    _showMessage("Произошла ошибка");
+            }
+        }
+    }
+
+    function _checkEmpty() {
+        const fields = document.getElementsByClassName("logon-card__input-field");
+        for (let i = 0; i < fields.length; i++) {
+            if (fields[i].value === "") {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function _checkRobot() {
+        const robotCheckbox = document.getElementById("i-am-human");
+        const robotRadio = document.getElementById("no-robot-yes");
+
+        return robotCheckbox.checked && robotRadio.checked;
+    }
+
+    return {
+        init: _init
+    }
+})();
 
 flip.init();
 fullscreenMenu.init();
@@ -844,4 +934,5 @@ window.addEventListener('load', slider.init);
 window.addEventListener('load', skillsRate.init);
 window.addEventListener('load', adminForms.init);
 window.addEventListener('load', sendMail.init);
+window.addEventListener('load', auth.init);
 

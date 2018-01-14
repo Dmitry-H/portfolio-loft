@@ -3,6 +3,7 @@ const router = express.Router();
 const slides = require("../base/slides");
 const blogposts = require("../base/blogposts");
 const skills = require("../base/skills");
+const userData = require("../base/user");
 
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
@@ -10,9 +11,12 @@ const jsonParser = bodyParser.json();
 const fs = require("fs");
 const multiparty = require('multiparty');
 
+
+
 const nodemailer = require('nodemailer');
 
 router.get("/", function(req, res) {
+    console.log(req.session);
     res.render("index");
 });
 
@@ -29,20 +33,46 @@ router.get("/my-works", function(req, res) {
 });
 
 router.get("/admin", function(req, res) {
-    res.render("admin-skills", {skills: skills.get()});
+    if (req.session.username === userData.getUserData().userName) {
+        res.render("admin-skills", {skills: skills.get()});
+    }
+    else {
+        res.render("error-403");
+    }
 });
 
 router.get("/admin-blog", function(req, res) {
-    res.render("admin-blog");
+    if (req.session.username === userData.getUserData().userName) {
+        res.render("admin-blog");
+    }
+    else {
+        res.render("error-403");
+    }
 });
 
 router.get("/admin-works", function(req, res) {
-    res.render("admin-works");
+    if (req.session.username === userData.getUserData().userName) {
+        res.render("admin-works");
+    }
+    else {
+        res.render("error-403");
+    }
+});
+
+router.post("/logon", jsonParser, function (request, response) {
+    if(!request.body) return response.sendStatus(400);
+    const userInfo = userData.getUserData();
+    if (request.body.username === userInfo.userName && request.body.password === userInfo.password){
+        request.session.username = userInfo.userName;
+        response.json({status: "ok"});
+    }
+    else {
+        response.json({status: "wrong password"});
+    }
 });
 
 router.post("/updateskills", jsonParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
-    // console.log(request.body);
     skills.add(request.body);
     response.json({status: "ok"});
 });
@@ -51,16 +81,12 @@ router.post("/newblogpost", jsonParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
     console.log(request.body);
     blogposts.add(request.body);
-    // console.log(request);
-    // response.json(`${request.body.userName} - ${request.body.userAge}`);
     response.json({status: "ok"});
 });
 
 router.post("/mail", jsonParser, function (request, response) {
     if(!request.body) return response.sendStatus(400);
     console.log(request.body);
-    // console.log(request);
-    // response.json(`${request.body.userName} - ${request.body.userAge}`);
 
     response.json({status: "ok"});
 });

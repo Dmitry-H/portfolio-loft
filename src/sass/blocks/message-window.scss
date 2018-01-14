@@ -1,0 +1,31 @@
+.message-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px;
+  width: 250px;
+  border-radius: 5px;
+  background-color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: $decor-animation-delay;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__message {
+    margin-bottom: 20px;
+    font-family: $robotoregular;
+    color: #000;
+    text-align: center;
+  }
+
+  &__close {
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+}

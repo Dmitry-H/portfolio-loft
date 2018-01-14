@@ -20,15 +20,15 @@ block content
                     +developer-info({mixClass: "developer-card__developer-info"})
                     +socials(socialItems, {mixClass: "developer-card__socials"})
                     +menu(menuItems, "main-nav", {itemsCount: 3})
-                form.main-wrapper__logon-form.main-wrapper__logon-side
+                form(method="post" action="/logon")#logon-form.main-wrapper__logon-form.main-wrapper__logon-side
                     article.logon-card
                         .logon-card__header
                             h2.common-title.common-title--light.common-title--small Авторизуйтесь
                         .logon-card__fields
                             .logon-card__field-wrapper.logon-card__field-wrapper--login
-                                input.logon-card__input-field(type="text" placeholder="Логин")
+                                input.logon-card__input-field(type="text" placeholder="Логин" name="username")
                             .logon-card__field-wrapper.logon-card__field-wrapper--password
-                                input.logon-card__input-field(type="password" placeholder="Пароль")
+                                input.logon-card__input-field(type="password" placeholder="Пароль" name="password")
                         .logon-card__check-block
                             input.logon-card__checkbox(type="checkbox" checked="checked" id="i-am-human" name="i-am-human")
                             label.logon-card__input-label.logon-card__input-label--checkbox(for="i-am-human") Я человек
@@ -45,3 +45,6 @@ block content
             span.small-footer__name © Дмитрий Хайс
             span.small-footer__separator=  " | "
             span.small-footer__description создано с любовью в LoftSchool | 2018
+        .message-window.main-wrapper__message-window
+            .message-window__message Поля должны быть заполнены
+            a(href="#").message-window__close.button OK
