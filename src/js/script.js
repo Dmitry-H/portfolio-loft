@@ -157,13 +157,13 @@ const sidebar = (function () {
         window.addEventListener("touchend", _touchSwipeEnd);
         sidebar.addEventListener("mousedown", _mouseSwipeStart);
         window.addEventListener("mouseup", _MouseSwipeEnd);
+
         window.addEventListener("scroll", _verticalCenter.bind(null, appendix));
         window.addEventListener("scroll", _verticalCenter.bind(null, contents));
         window.addEventListener("scroll", _sidebarCenter.bind(null, mainSidebar));
 
-        _verticalCenter.bind(null, appendix);
-        _verticalCenter.bind(null, contents);
-
+        _verticalCenter.bind(null, appendix)();
+        _verticalCenter.bind(null, contents)();
 
         window.addEventListener("scroll", _trackActiveArticle);
         _initScroll(articlesList);
@@ -220,6 +220,17 @@ const sidebar = (function () {
         let posY = windowHeight / 2 - elementHeight / 2 + window.pageYOffset;
         element.style.transform = `translateY(${posY}px)`;
     }
+
+/*    function _verticalCenter(element, e) {
+        let windowHeight = document.body.clientHeight;
+        let elementHeight = element.offsetHeight;
+        let posY = windowHeight / 2 - elementHeight / 2 + window.pageYOffset;
+        console.log("windowHeight - " + windowHeight);
+        console.log("elementHeight - " +  elementHeight);
+        console.log("posY - " +  posY);
+
+        element.style.transform = `translateY(${posY}px)`;
+    }*/
 
     function _sidebarCenter(element, e) {
         if (window.pageYOffset < mainSidebarFirstPosition) return;

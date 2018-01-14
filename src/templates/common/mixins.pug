@@ -126,9 +126,9 @@ mixin fullscreen-menu(menuItems, currentPage)
             - for (var i = 0; i < menuItems.length; i++)
                 li.fullscreen-menu__item
                     if menuItems[i].page == currentPage
-                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-opacity= menuItems[i].name
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-opacity.common-title--small-padding= menuItems[i].name
                     else
-                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-rounds(href=menuItems[i].page)= menuItems[i].name
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-rounds.common-title--small-padding(href=menuItems[i].page)= menuItems[i].name
 
 mixin tabs(tabs, active)
     ul.tabs

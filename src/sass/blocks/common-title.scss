@@ -85,6 +85,10 @@
     }
   }
 
+  &--small-padding {
+    padding: 40px 70px;
+  }
+
   @include tablet {
     padding: 54px;
     font-size: 49px;
