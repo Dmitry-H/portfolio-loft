@@ -1,0 +1,47 @@
+.page-header {
+  padding: 24px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: $robotoregular;
+  color: #fff;
+  background-color: #e7a731;
+  flex-shrink: 0;
+
+  &__title {
+    margin: 0;
+    font-size: 28px;
+    font-family: $robotomedium;
+    font-weight: normal;
+  }
+
+  &__return {
+    display: block;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0.7;
+    text-decoration: none;
+    border-bottom: 1px solid #fff;
+  }
+
+  @include tablet {
+    &__title {
+      font-size: 21px;
+    }
+  }
+
+  @include phone {
+    flex-direction: column;
+    padding: 15px 15px;
+
+    &__title {
+      order: 2;
+      text-align: center;
+    }
+
+    &__return {
+      order: 1;
+      margin-bottom: 5px;
+    }
+  }
+}

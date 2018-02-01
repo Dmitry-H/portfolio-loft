@@ -1,0 +1,16 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 320px;
+  height: 100%;
+
+  &__information {
+    flex: 1 0 auto;
+  }
+
+  &__message {
+    @include absolute-center;
+    z-index: 120;
+  }
+}

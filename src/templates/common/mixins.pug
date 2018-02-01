@@ -80,17 +80,18 @@ mixin contacts(items, addClass)
             li(class = `contacts__item contacts__item--${itemName}`)= item
 
 mixin skills(skills)
+    - var category
     ul.skills
-        each item in skills
+        each category in skills
             li.skills__category
-                h3.skills__category-title= item[0]
+                h3.skills__category-title= category.categoryName
                 ul.skills__items
-                    - for (var i = 1; i < item.length; i++)
-                        li.skills__item
+                    each item in category.skillItems
+                        li.skills__item(data-percent= item.percent)
                             svg.skills__image(viewBox="0 0 110 110")
                                 circle.skills__image-bg(r="45" cx="50%" cy="50%" fill="none")
-                                circle.skills__image-level(r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)")
-                            span.skills__label= item[i]
+                                circle.skills__image-level.circle-0(r="45" cx="50%" cy="50%" transform="rotate(-90 55 55)")
+                            span.skills__label= item.name
 
 mixin footer(modifier)
     - var classNames = "page-footer";
@@ -116,3 +117,58 @@ mixin page-header(modifier)
         +developer-info({modifier: "header", mixClass: "page-header__developer-info"})
         a.page-header__arrow-down(href="#")
             +icon("arrow_down", "navigate-arrow")
+
+mixin fullscreen-menu(menuItems, currentPage)
+    .main-container__overlay
+        a.close-cross.main-container__overlay-close(href="#")
+    nav.fullscreen-menu.main-container__fullscreen-menu
+        ul.fullscreen-menu__items
+            - for (var i = 0; i < menuItems.length; i++)
+                li.fullscreen-menu__item
+                    if menuItems[i].page == currentPage
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-opacity.common-title--small-padding= menuItems[i].name
+                    else
+                        a.fullscreen-menu__link.common-title.common-title--light.common-title--no-rounds.common-title--small-padding(href=menuItems[i].page)= menuItems[i].name
+
+mixin tabs(tabs, active)
+    ul.tabs
+        - for (var i = 0; i < tabs.length; i++)
+            li.tabs__item
+                if i == active
+                    a.tabs__link.tabs__link--active(href= tabs[i].link)= tabs[i].name
+                else
+                    a.tabs__link(href= tabs[i].link)= tabs[i].name
+
+mixin skills-admin(skills)
+    ul.skills
+        each category in skills
+            li.skills__category
+                h3.skills__category-title= category.categoryName
+                table.skills__items
+                    each item in category.skillItems
+                        tr.skills__row
+                            td
+                                label(for=item.name).skills__name!= item.name
+                            td
+                                input.skills__input(type="number" min="0" max="100" id=item.name name=item.name value= item.percent)
+                            td.skills__percent %
+
+mixin slides(slides)
+    - for (var i = 0; i < slides.length; i++)
+        li.works-slider__item(data-name= slides[i].name data-teck= slides[i].teck data-link= slides[i].link)
+            img.works-slider__image.works-slider__image--small(src= slides[i].img)
+
+mixin blogContents(blogposts, className, activeClass)
+    - var len = blogposts.length;
+    - var active = className + " " + activeClass
+    a(href="#" class= active)= blogposts[0].name
+    - for (var i = 1; i < len; i++)
+        a(href="#" class= className)= blogposts[i].name
+
+mixin blog(blogposts)
+    ul.blog__articles-items
+        - for (var i = 0; i < blogposts.length; i++)
+            li.blog__article
+                h3.blog__title= blogposts[i].name
+                span.blog__date= blogposts[i].date
+                .blog__article-content!= blogposts[i].post

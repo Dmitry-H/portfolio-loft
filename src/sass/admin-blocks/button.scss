@@ -1,0 +1,18 @@
+.button {
+  padding: 15px 20px;
+  border: none;
+  background-color: $button-color;
+  font-family: $robotoregular;
+  font-size: 16px;
+  color: #fff;
+  transition: $decor-animation-delay;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $button-color-hover;
+  }
+
+  @include phone {
+    font-size: 14px;
+  }
+}

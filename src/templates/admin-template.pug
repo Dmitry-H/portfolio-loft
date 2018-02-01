@@ -1,0 +1,18 @@
+extends ./page-template
+
+block variables
+    - var title = "Панель администратора"
+
+block header
+    link(rel="stylesheet" href="./css/admin.min.css")
+
+block content
+    .main-container
+        include ./blocks/admin-header
+        block tabs
+        main.information.main-container__information
+            .information__wrapper
+                block info
+        .message-window.main-container__message
+            span.message-window__message Сообщение отправлено
+            .button.message-window__close-button Закрыть

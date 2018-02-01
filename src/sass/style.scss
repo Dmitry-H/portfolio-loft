@@ -1,10 +1,13 @@
 @import "../../node_modules/node-normalize-scss/_normalize";
 
-@import "./global/tags";
+
 @import "./global/fonts";
 
 @import "./variables";
 @import "./mixins";
+@import "./global/tags";
+@import "./global/animation";
+@import "./global/circles";
 
 @import "./blocks/logon-button";
 @import "./blocks/main-wrapper";
@@ -35,3 +38,8 @@
 @import "blocks/map";
 @import "blocks/blog";
 @import "blocks/logon-card";
+@import "blocks/main-container";
+@import "blocks/close-cross";
+@import "blocks/fullscreen-menu";
+@import "blocks/swipe-sidebar";
+@import "blocks/message-window";

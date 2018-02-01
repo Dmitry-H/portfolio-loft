@@ -50,6 +50,11 @@
     resize: none;
   }
 
+  &__info {
+    font-family: $robotomedium;
+    text-align: center;
+  }
+
   &__controls {
     display: flex;
     width: 100%;

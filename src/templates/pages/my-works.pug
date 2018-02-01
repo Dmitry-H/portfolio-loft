@@ -2,45 +2,56 @@ extends ../page-template
 
 block variables
     - var title = "Мои работы"
+    - var currentPage = "my-works"
+
+block header
+    include ../blocks/preloader-head
+    link(rel="stylesheet" href="./css/style.min.css")
 
 block content
-    +page-header
-    section.my-works
-        .my-works__header
-            .my-works__title
-                h2.common-title.common-title--works Мои работы
-        .works-slider
-            .works-slider__info
-                h3.common-title.common-title--small Сайт школы онлайн <br> образования
-                p.works-slider__technologies HTML , CSS, JavaScript
-                a(href="#").site-link Посмотреть сайт
-            //.works-slider__images
-            .works-slider__slide
-                img.works-slider__image(src="./img/userpics/slide-1.png")
-            .works-slider__navigation-slides
-                .works-slider__navigation-slide.works-slider__navigation-slide--prev
-                    img.works-slider__image(src="./img/userpics/slide-2.png")
-                    +icon("portf_arrow_up", "works-slider__navigation-arrow")
-                .works-slider__navigation-slide.works-slider__navigation-slide--next
-                    img.works-slider__image(src="./img/userpics/slide-3.png")
-                    +icon("portf_arrow_down", "works-slider__navigation-arrow")
-    section.about-me
-        .about-me__header
-            h2.common-title.common-title--about Что обо мне <br> говорят
-        ul.about-me__feedbacks
-            +feedbacks(instructors)
-        .about-me__contact
-            form#mail-form
-                .mail-form
-                    .mail-form__header
-                        h3.common-title.common-title--small Связаться со мной
-                    .mail-form__fields
-                        input.mail-form__input-field(type="text" placeholder="Имя")
-                        input.mail-form__input-field(type="email" placeholder="Email")
-                        textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение")
-                    .mail-form__controls
-                        button(type="submit").button.mail-form__button Отправить
-                        button(type="clear").button.mail-form__button Очистить
-        a.about-me__up-arrow(href="#")
-            +icon("arrow_down", "navigate-arrow", "up")
-    +footer
+    main.main-container
+        .main-container__preloader.preloader
+            include ../blocks/preloader
+        +page-header
+        section.my-works
+            .my-works__header
+                .my-works__title
+                    h2.common-title.common-title--works Мои работы
+            .works-slider
+                .works-slider__info
+                    h3.common-title.common-title--small#project-name Сайт школы онлайн образования
+                    p.works-slider__technologies HTML , CSS, JavaScript
+                    a(href="https://loftschool.com" target="_blank").site-link Посмотреть сайт
+                .works-slider__slide
+                    img.works-slider__image.works-slider__image--big(src="./img/userpics/slide-1.png")
+                .works-slider__navigation-slides
+                    ul.works-slider__navigation-slide.works-slider__navigation-slide--next
+                        +slides(slides)
+                        +icon("portf_arrow_down", "works-slider__navigation-arrow")
+                    ul.works-slider__navigation-slide.works-slider__navigation-slide--prev
+                        //-img.works-slider__image(src="./img/userpics/slide-3.png")
+                        +icon("portf_arrow_up", "works-slider__navigation-arrow")
+                        +slides(slides)
+
+        section.about-me
+            .about-me__header
+                h2.common-title.common-title--about Что обо мне <br> говорят
+            ul.about-me__feedbacks
+                +feedbacks(instructors)
+            .about-me__contact
+                form#mail-form(method="post" action="/mail")
+                    .mail-form
+                        .mail-form__header
+                            h3.common-title.common-title--small Связаться со мной
+                        .mail-form__fields
+                            input.mail-form__input-field(type="text" placeholder="Имя" name="name")
+                            input.mail-form__input-field(type="email" placeholder="Email" name="email")
+                            textarea.mail-form__input-field.mail-form__message(placeholder="Ваше сообщение" name="message")
+                            .mail-form__info
+                        .mail-form__controls
+                            button(type="submit").button.mail-form__button Отправить
+                            button(type="clear").button.mail-form__button Очистить
+            a.about-me__up-arrow(href="#")
+                +icon("arrow_down", "navigate-arrow", "up")
+        +footer
+        +fullscreen-menu(menuItems, currentPage)

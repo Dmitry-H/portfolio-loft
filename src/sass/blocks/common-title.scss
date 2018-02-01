@@ -62,7 +62,8 @@
     color: #fff;
 
     &::before, &::after {
-      background: url(../img/ellipse-3-light.svg) no-repeat;
+      background: url(../img/ellipse-3-white.svg) no-repeat;
+      opacity: 0.4;
     }
   }
 
@@ -70,6 +71,22 @@
     &::before, &::after {
       height: 12px;
     }
+  }
+
+  &--no-rounds {
+    &::before, &::after {
+      content: normal;
+    }
+  }
+
+  &--no-opacity {
+    &::before, &::after {
+      opacity: 1;
+    }
+  }
+
+  &--small-padding {
+    padding: 40px 70px;
   }
 
   @include tablet {

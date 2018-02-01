@@ -79,6 +79,13 @@
     grid-area: footer;
   }
 
+  &__message-window {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   @include tablet {
     &__flip-container {
       width: 350px;

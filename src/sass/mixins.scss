@@ -52,3 +52,23 @@
     background-color: $color;
   }
 }
+
+@mixin hiddenElement {
+  opacity: 0;
+  visibility: hidden;
+  transition: $decor-animation-delay;
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@mixin input-style {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: $robotoregular;
+  font-size: 16px;
+}
